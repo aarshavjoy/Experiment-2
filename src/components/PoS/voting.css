@@ -1,0 +1,11 @@
+.voting_machine{
+    width: 70%;
+}
+.vm{
+   border: "2px";
+   border-color:aliceblue;
+   width:"200px";
+   height: fit-content;
+
+
+}

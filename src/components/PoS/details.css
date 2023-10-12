@@ -1,0 +1,28 @@
+.details{
+width: 70%;
+/* border-radius: 30px */
+
+}
+/* Target the overall accordion */
+.details {
+    background-color: black;
+    border-radius: 10px; /* This will add border radius */
+    border-color: aliceblue;
+}
+
+/* Change color of the text inside the accordion */
+.details .MuiTypography-root {
+    color: white;
+}
+
+/* Change color of the expand icon */
+.details .MuiSvgIcon-root {
+    color: white;
+}
+.next-button{
+  align-items: end;
+}
+.details-btn{
+    margin-left: 55%;
+    border-radius: 15px;
+}

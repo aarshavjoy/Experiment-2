@@ -1,12 +1,13 @@
 import Divider from './Divider';
 import './App.css';
-import Login from './components/Login';
+// import Login from './components/Login';
 import Candidate from './components/Candidate';
 import { useState } from 'react';
 import Token from './components/Token';
 import CustomizedTables from './components/Table';
 import Tables from './components/Table';
-import CustomCaptcha from './components/Verification';
+// import CustomCaptcha from './components/Verification';
+import MainContainer from './components/Common/MainContainer';
 
 
 function App() {
@@ -30,19 +31,19 @@ function App() {
   };
   let pageContent = null;
 
-  switch (currentPage) {
-    case 'login':
-      pageContent = <Login generateRandomToken={generateRandomToken} />;
-      break;
-    case 'token':
-      pageContent = <Token token={randomToken} onClose={closeTokenDialog} />;
-      break;
-    case 'candidate':
-      pageContent = <Candidate />;
-      break;
-    default:
-      pageContent = <Login generateRandomToken={generateRandomToken} />;
-  }
+  // switch (currentPage) {
+  //   case 'login':
+  //     pageContent = <Login generateRandomToken={generateRandomToken} />;
+  //     break;
+  //   case 'token':
+  //     pageContent = <Token token={randomToken} onClose={closeTokenDialog} />;
+  //     break;
+  //   case 'candidate':
+  //     pageContent = <Candidate />;
+  //     break;
+  //   default:
+  //     pageContent = <Login generateRandomToken={generateRandomToken} />;
+  // }
 
 
 
@@ -53,23 +54,8 @@ function App() {
   return (<>
     <div className="App">
     <div className="container-fluid container-full-height">
-      <Divider/>
-        <div className="row">
-            <div className="col-md-8 left-column">
-              
-                <h2>Left Column</h2>
-               
-            </div>
-            <div className="col-md-4 right-column">
-            {/* {showTokenDialog && <Token token={randomToken} onClose={closeTokenDialog} />}
-      <Login generateRandomToken={generateRandomToken} /> */}
-      {pageContent}
-     {/* <Tables/> */}
-               {/* <Candidate/> */}
-              <CustomCaptcha/>
-              
-            </div>
-        </div>
+      <MainContainer />
+ 
     </div>
     </div>
     

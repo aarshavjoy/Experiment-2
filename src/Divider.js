@@ -1,6 +1,6 @@
 import React from "react";
 
-const Divider = () => {
+const Divider = ({title}) => {
   return (
     <div
       style={{
@@ -92,7 +92,7 @@ const Divider = () => {
           }}
           transform={"translate(160,70)"}
         >
-          Proof Of Work
+         {title}
         </text>
       </svg>
     </div>
