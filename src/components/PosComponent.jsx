@@ -5,18 +5,21 @@ import React, { useState } from 'react';
 import Login from './PoS/Login'
 import Divider from '../Divider';
 
-
+import Voting from './PoS/voting';
 
 const PosComponent = () => {
     const [isLoggedIn, setIsLoggedIn] = useState(false);
     const [showManifesto, setShowManifesto] = useState(false);
-
+    const [showVotingMachine, setShowVotinMachine] = useState(false);
     const handleSuccessfulLogin = () => {
         setIsLoggedIn(true);
     };
 
     const handleNextClick = () => {
         setShowManifesto(true);
+    };
+    const handleSelectClick = () => {
+        setShowVotinMachine(true);
     };
     return (
     <>
@@ -32,9 +35,14 @@ const PosComponent = () => {
                     <div className="col-md-3 right-column">
                     {
         isLoggedIn 
-        ? (showManifesto ? <Manifesto /> : <BasicAccordion onNextClick={handleNextClick} />)
+        ? (
+            showManifesto 
+            ? (showVotingMachine ? <Voting/> : <Manifesto onSelectClick={handleSelectClick} />)
+            : <BasicAccordion onNextClick={handleNextClick} />
+          )
         : <Login onSuccessfulLogin={handleSuccessfulLogin} />
     }
+
                         {/* <Voting></Voting> */}
                     </div>
                 </div>

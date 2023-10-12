@@ -7,7 +7,7 @@ width: 70%;
 .details {
     background-color: black;
     border-radius: 10px; /* This will add border radius */
-    border-color: aliceblue;
+    border-color: green
 }
 
 /* Change color of the text inside the accordion */

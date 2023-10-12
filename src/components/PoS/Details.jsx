@@ -11,7 +11,7 @@ export default function BasicAccordion(props) {
     <>
       <div>
         <div>
-          <Accordion className='details' style={{ background: 'black', borderColor: 'white', borderWidth: '1px', borderStyle: 'solid', borderRadius: '30px' }}>
+          <Accordion className='details' style={{ background: 'black', borderColor: 'green', borderWidth: '1px', borderStyle: 'solid', borderRadius: '30px' }}>
             <AccordionSummary
               expandIcon={<ExpandMoreIcon />}
               aria-controls="panel1a-content"
@@ -28,13 +28,15 @@ export default function BasicAccordion(props) {
             </AccordionDetails>
           </Accordion>
 
-          <Accordion className='details' style={{ background: 'black', borderColor: 'white', borderWidth: '1px', borderStyle: 'solid', borderRadius: '30px', marginTop: '5%' }}>
+          <Accordion className='details' style={{ background: 'black', borderColor: '#19A7CE', borderWidth: '1px', borderStyle: 'solid', borderRadius: '30px', marginTop: '5%' }}>
             <AccordionSummary
               expandIcon={<ExpandMoreIcon />}
               aria-controls="panel1a-content"
               id="panel1a-header"
             >
-              <Typography>Technological Party <i className="fa-solid fa-robot"></i></Typography>
+              <Typography>Technological Party 
+                {/* <i className="fa-solid fa-robot"></i> */}
+                </Typography>
             </AccordionSummary>
             <AccordionDetails>
               <Typography>
@@ -45,7 +47,7 @@ export default function BasicAccordion(props) {
             </AccordionDetails>
           </Accordion>
 
-          <Accordion className='details' style={{ background: 'black', borderColor: 'white', borderWidth: '1px', borderStyle: 'solid', borderRadius: '30px', marginTop: '5%', marginBottom: '5%' }}>
+          <Accordion className='details' style={{ background: 'black', borderColor: '#EAC696', borderWidth: '1px', borderStyle: 'solid', borderRadius: '30px', marginTop: '5%', marginBottom: '5%' }}>
             <AccordionSummary
               expandIcon={<ExpandMoreIcon />}
               aria-controls="panel2a-content"

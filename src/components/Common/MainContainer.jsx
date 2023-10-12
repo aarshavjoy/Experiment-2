@@ -2,6 +2,7 @@ import React from 'react';
 import PosComponent from '../PosComponent';
 import PowComponent from '../PowComponent';
 import Divider from '../../Divider';
+import { FormControlLabel, FormGroup, Switch } from '@mui/material';
 
 const MainContainer = () => {
     const [showPoW, setShowPow] = React.useState(true)
@@ -10,7 +11,11 @@ const MainContainer = () => {
     ]
     return (
         <div>
-          
+          {/* <FormGroup>
+  <FormControlLabel control={<Switch defaultChecked />} label="Proof of Stake" />
+  
+ 
+</FormGroup> */}
 
             {/* switch */}
 

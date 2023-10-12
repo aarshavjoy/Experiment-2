@@ -1,3 +1,4 @@
+import { Suspense } from "react";
 import "./App.css";
 
 import MainContainer from "./components/Common/MainContainer";
@@ -7,7 +8,10 @@ function App() {
     <>
       <div className="App">
         <div className="container-fluid container-full-height">
-          <MainContainer />
+          <Suspense>
+            <MainContainer />
+          </Suspense>
+
         </div>
       </div>
     </>

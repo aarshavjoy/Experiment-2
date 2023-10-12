@@ -59,6 +59,7 @@ const Scene = () => {
   }, [id, isLeft]);
   const texture = useLoader(THREE.TextureLoader, img);
   return (
+   
     <Canvas
       style={{
         background: "#212529",
@@ -68,7 +69,7 @@ const Scene = () => {
       }}
       camera={{ fov: 15, position: [-10, 15, 50] }}
     >
-      <Suspense fallback={null}>
+     
         <ambientLight />
         <pointLight position={[10, 10, 10]} />
         <Physics>
@@ -110,8 +111,8 @@ const Scene = () => {
           <OrbitControls />
           <color args={["black"]} attach="background" />
         </Physics>
-      </Suspense>
     </Canvas>
+
   );
 };
 

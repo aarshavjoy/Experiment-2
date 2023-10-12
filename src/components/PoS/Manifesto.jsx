@@ -7,20 +7,20 @@ import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import './details.css'
 import { ColorLens } from '@mui/icons-material';
 import './manifesto.css'
-export default function Manifesto() {
+export default function Manifesto(props) {
   return (
     <>
     <div>
     <div>
 <h3 className='manifesto-heading'>Election manifesto</h3>
-      <Accordion  className='details'  style={{ background: 'black', borderColor: 'white', borderWidth: '1px', borderStyle: 'solid',borderRadius:'30px' }}>
+      <Accordion  className='details'  style={{ background: 'black', borderColor: 'green', borderWidth: '1px', borderStyle: 'solid',borderRadius:'30px' }}>
         <AccordionSummary
           expandIcon={<ExpandMoreIcon />}
           aria-controls="panel1a-content"
           id="panel1a-header"
         >
           <Typography>Green Future Party <span class="material-symbols-outlined">
-nature_people
+
 </span>
           </Typography>
         </AccordionSummary>
@@ -32,7 +32,7 @@ nature_people
                  <li>    Ban single-use plastics and invest in sustainable alternatives.</li>
                    </ul>
                    <div className='manifesto-btn'>
-                   <button type="button" class="btn btn-outline-light manifesto-button ">Select</button>
+                   <button type="button" class="btn btn-outline-light manifesto-button "  onClick={props.onSelectClick}>Select</button>
                    </div>
           </Typography>
         </AccordionDetails>
@@ -43,7 +43,9 @@ nature_people
           aria-controls="panel1a-content"
           id="panel1a-header"
         >
-          <Typography>Technological Party <i class="fa-solid fa-robot"></i></Typography>
+          <Typography>Technological Party
+             {/* <i class="fa-solid fa-robot">    </i> */}
+              </Typography>
         </AccordionSummary>
         <AccordionDetails>
           <Typography>
@@ -51,7 +53,7 @@ nature_people
             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse
             malesuada lacus ex, sit amet blandit leo lobortis eget.
             <div className='manifesto-btn'>
-                   <button type="button" class="btn btn-outline-light manifesto-button ">Select</button>
+                   <button type="button" class="btn btn-outline-light manifesto-button "  onClick={props.onSelectClick}>Select</button>
                    </div>
           </Typography>
         </AccordionDetails>
@@ -70,7 +72,7 @@ nature_people
             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse
             malesuada lacus ex, sit amet blandit leo lobortis eget.
             <div className='manifesto-btn'>
-                   <button type="button" class="btn btn-outline-light manifesto-button ">Select</button>
+                   <button type="button" class="btn btn-outline-light manifesto-button "  onClick={props.onSelectClick}>Select</button>
                    </div>
           </Typography>
         </AccordionDetails>

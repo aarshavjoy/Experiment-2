@@ -1,6 +1,6 @@
 import React from 'react'
 import './voting.css'
-import Voting_machine from './layer3.svg'
+import Voting_machine from './images/layer2.svg'
 const Voting = () => {
 // React.useEffect(()=>{
 //     const test=document.getElementsByClassName('voting_machine')
