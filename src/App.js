@@ -1,7 +1,7 @@
 import { Suspense } from "react";
 import "./App.css";
 
-import MainContainer from "./components/Common/MainContainer";
+import MainContainer from "./components/common/MainContainer";
 
 function App() {
   return (

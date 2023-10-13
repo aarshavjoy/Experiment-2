@@ -5,7 +5,7 @@ import Divider from '../../Divider';
 import { FormControlLabel, FormGroup, Switch } from '@mui/material';
 
 const MainContainer = () => {
-    const [showPoW, setShowPow] = React.useState(true)
+    const [showPoW, setShowPow] = React.useState(false)
     const onHandleChange = ()=>[
         setShowPow()
     ]

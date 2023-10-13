@@ -1,6 +1,7 @@
 import React from 'react'
 import './voting.css'
 import Voting_machine from './images/layer2.svg'
+import VoterMachine from '../common/VotingMachine';
 const Voting = () => {
 // React.useEffect(()=>{
 //     const test=document.getElementsByClassName('voting_machine')
@@ -12,7 +13,7 @@ const Voting = () => {
 
     return (
         <div>
-<img className='voting_machine' src={Voting_machine} alt="" />
+<VoterMachine />
         </div>
     );
 }
