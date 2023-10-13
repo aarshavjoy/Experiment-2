@@ -23,7 +23,11 @@ function Round(props) {
         penumbra={1}
       />
       <RoundedBox ref={ref} args={[2, 0.1, 2.5]} radius={0.06}>
-        <meshLambertMaterial map={texture} attach="material" color={"white"} />
+        <meshLambertMaterial
+          map={texture}
+          attach="material"
+          color={props.spotlightColor}
+        />
       </RoundedBox>
     </group>
   );

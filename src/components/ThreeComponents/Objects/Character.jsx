@@ -9,7 +9,7 @@ import { useFrame } from "react-three-fiber";
 import { useBox } from "@react-three/cannon";
 
 const Character = (props) => {
-  const [position, setPosition] = React.useState([-9, -2, 2.6]);
+  const [position, setPosition] = React.useState([-10, -2, 2.6]);
   const [rotation, setRotation] = React.useState([0, 190, 0]);
   const [isWalk, setIsWalk] = React.useState("isStand");
   const group = useRef();
@@ -50,7 +50,7 @@ const Character = (props) => {
     }
     if (isLeft) {
       newPosition[0] += speed;
-      // newRotation[1] = 70;
+
       setPosition(newPosition);
       // setRotation(newRotation);
     }

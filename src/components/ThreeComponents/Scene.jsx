@@ -2,11 +2,15 @@ import React, { Suspense, useEffect, useState } from "react";
 import * as THREE from "three";
 import { Physics } from "@react-three/cannon";
 import { useLoader, Canvas } from "react-three-fiber";
-import img from "../../textures/box.jpg";
+import woodTexture from "../../textures/wood.jpg";
 import RoundBox from "../ThreeComponents/Objects/RoundBox";
 import { OrbitControls } from "@react-three/drei";
 import Character from "./Objects/Character";
 import Terrain from "./Terrain";
+import Loading from "../Loading";
+import Table from "./Objects/Table";
+import Cupboard from "./cupboard";
+import Light from "./Objects/Light";
 
 const intialState = () => {
   return {
@@ -20,6 +24,7 @@ const Scene = () => {
   const [state, setState] = useState(intialState());
   const { id, isLeft, color } = state;
   console.log(state.id);
+
   React.useEffect(() => {
     if (isLeft) {
       const walk = setTimeout(() => {
@@ -28,7 +33,7 @@ const Scene = () => {
           isLeft: false,
           id: 1,
         }));
-      }, 3200);
+      }, 3400);
 
       return () => {
         clearTimeout(walk);
@@ -57,19 +62,18 @@ const Scene = () => {
       }));
     }
   }, [id, isLeft]);
-  const texture = useLoader(THREE.TextureLoader, img);
+  const wood = useLoader(THREE.TextureLoader, woodTexture);
   return (
-   
     <Canvas
       style={{
-        background: "#212529",
+        background: "#1b1b1b",
         height: "81vh",
         marginTop: 19,
         width: "100%",
       }}
-      camera={{ fov: 15, position: [-10, 15, 50] }}
+      camera={{ fov: 17, position: [-12, 15, 50] }}
     >
-     
+      <Suspense fallback={<Loading />}>
         <ambientLight />
         <pointLight position={[10, 10, 10]} />
         <Physics>
@@ -81,38 +85,32 @@ const Scene = () => {
               <Character
                 isLeft={state.isLeft}
                 state={state}
-                scale={[2, 2, 2]}
+                scale={[2.2, 2.2, 2.2]}
               />
             </group>
+            <Light />
             {[1, 2, 3, 4].map((item) => {
               return (
-                <group position={[-8, 0, -5]}>
-                  <mesh position={[item * 3.5, -0.5, 0]}>
-                    <boxGeometry args={[2, 3, 2]} />
-                    <meshBasicMaterial map={texture} color={"blue"} />
-                  </mesh>
+                <group position={[-8, -2, 1]}>
+                  <group position={[2.1, 0, 1]}>
+                    <Table position={[item * 4.4, 2, 0]} />
+                  </group>
+                  <group position={[-3.5, -1.5, -4]}></group>
                 </group>
               );
+            })}
+            <Cupboard />
+            {[1, 2, 3, 4].map((item) => {
+              return <group position={[-8.5, -0.5, 2]}></group>;
             })}
 
-            {[1, 2, 3, 4].map((item) => {
-              return (
-                <group position={[-8.5, -0.5, 2]}>
-                  <RoundBox
-                    spotlightColor={color}
-                    key={item}
-                    position={[item * 3.7, 2, 0]}
-                  />
-                </group>
-              );
-            })}
             <Terrain />
           </group>
           <OrbitControls />
-          <color args={["black"]} attach="background" />
+          <color args={["#1b1b1b"]} attach="background" />
         </Physics>
+      </Suspense>
     </Canvas>
-
   );
 };
 
