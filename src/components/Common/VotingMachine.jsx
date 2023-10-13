@@ -1,5 +1,5 @@
 import React from 'react'
-import sound from '../Assets/audio/beep.mp3'
+import sound from '../../Assets/Audios/beep.mp3'
 
 const VoterMachine = () => {
 
