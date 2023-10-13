@@ -43,7 +43,7 @@ const PosComponent = () => {
         : <Login onSuccessfulLogin={handleSuccessfulLogin} />
     }
 
-                        {/* <Voting></Voting> */}
+                        <Voting/>
                     </div>
                 </div>
             </div></>
