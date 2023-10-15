@@ -136,6 +136,8 @@ const Scene = () => {
           </group>
           <OrbitControls />
           <color args={["#1b1b1b"]} attach="background" />
+          {/* <OrbitControls /> */}
+          <color args={["black"]} attach="background" />
         </Physics>
       </Suspense>
     </Canvas>

@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { generateRandomToken } from "../utilts";
-import Login from "./common/Login";
+import Login from "./Common/Login";
 import Divider from "../Divider";
 import Token from "../components/PoW/Token";
 

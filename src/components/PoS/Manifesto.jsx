@@ -29,7 +29,7 @@ export default function Manifesto(props) {
            
              <ul>
                  <li>  Commit to reducing carbon emissions by 50% in the next ten years.</li>
-                 <li>    Ban single-use plastics and invest in sustainable alternatives.</li>
+                 <li>    Ban single-use plastics and invest in sustainable.</li>
                    </ul>
                    <div className='manifesto-btn'>
                    <button type="button" class="btn btn-outline-light manifesto-button "  onClick={props.onSelectClick}>Select</button>
@@ -37,7 +37,7 @@ export default function Manifesto(props) {
           </Typography>
         </AccordionDetails>
       </Accordion >
-      <Accordion className='details' style={{ background: 'black', borderColor: 'white', borderWidth: '1px', borderStyle: 'solid',borderRadius:'30px',marginTop:'5%' }}>
+      <Accordion className='details' style={{ background: 'black', borderColor:'#19A7CE', borderWidth: '1px', borderStyle: 'solid',borderRadius:'30px',marginTop:'5%' }}>
             <AccordionSummary
           expandIcon={<ExpandMoreIcon />}
           aria-controls="panel1a-content"
@@ -51,14 +51,14 @@ export default function Manifesto(props) {
           <Typography>
           <p>Vote Percetage:40%</p>
             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse
-            malesuada lacus ex, sit amet blandit leo lobortis eget.
+            malesuada lacus ex, sit amet.
             <div className='manifesto-btn'>
                    <button type="button" class="btn btn-outline-light manifesto-button "  onClick={props.onSelectClick}>Select</button>
                    </div>
           </Typography>
         </AccordionDetails>
       </Accordion>
-      <Accordion className='details'  style={{ background: 'black', borderColor: 'white', borderWidth: '1px', borderStyle: 'solid',borderRadius:'30px',marginTop:'5%' }}>
+      <Accordion className='details'  style={{ background: 'black', borderColor:'#EAC696', borderWidth: '1px', borderStyle: 'solid',borderRadius:'30px',marginTop:'5%' }}>
         <AccordionSummary
           expandIcon={<ExpandMoreIcon />}
           aria-controls="panel2a-content"
@@ -70,7 +70,7 @@ export default function Manifesto(props) {
           <Typography>
           <p>Vote Percetage:40%</p>
             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse
-            malesuada lacus ex, sit amet blandit leo lobortis eget.
+            malesuada lacus ex, sit amet .
             <div className='manifesto-btn'>
                    <button type="button" class="btn btn-outline-light manifesto-button "  onClick={props.onSelectClick}>Select</button>
                    </div>

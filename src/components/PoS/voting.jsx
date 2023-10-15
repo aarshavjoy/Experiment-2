@@ -1,8 +1,8 @@
 import React from 'react'
 import './voting.css'
-import Voting_machine from './images/layer2.svg'
-import VoterMachine from '../common/VotingMachine';
-const Voting = ({setShowCaptcha,setCaptcha}) => {
+
+import VoterMachine from '../Common/VotingMachine';
+const Voting = (props) => {
 // React.useEffect(()=>{
 //     const test=document.getElementsByClassName('voting_machine')
 //     test.addEventListener('click',()=>{
@@ -12,9 +12,14 @@ const Voting = ({setShowCaptcha,setCaptcha}) => {
   // },[])
 
     return (
+        <> 
         <div>
-<VoterMachine setShowCaptcha={setShowCaptcha} setCaptcha={setCaptcha} />
+<VoterMachine  />
+
+<button onClick={props.onCounting}></button>
         </div>
+
+        </>
     );
 }
 

@@ -23,12 +23,14 @@ html, body {
 }
 .login-container {
   width: 250px;
+  margin-top: 30%;
   margin: 0 auto;
   padding: 20px;
   border: 1px solid #ccc;
   border-radius: 5px;
   border-color: #22eff1;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  align-items: center;
 }
 
 .form-group {
@@ -158,8 +160,15 @@ margin-top:20px;
   opacity: 1;
   height: auto;
 }
+
 .btnss{
   margin-left:35%;
    background-color: rgb(139, 129, 129);
    color: #fff;
+}
+.verify{
+  color: rgb(6, 10, 10);
+}
+.denied{
+cursor: pointer;
 }

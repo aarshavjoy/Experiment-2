@@ -1,5 +1,6 @@
 .voting_machine{
-    width: 70%;
+    width: 60%;
+    align-items: center;
 }
 .vm{
    border: "2px";
@@ -9,3 +10,7 @@
 
 
 }
+
+
+
+
