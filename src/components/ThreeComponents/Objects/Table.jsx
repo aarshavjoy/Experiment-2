@@ -12,14 +12,24 @@ export default function Table(props) {
     "../../../textures/table.glb"
   );
   const { actions } = useAnimations(animations, group);
+  const changedColor = props.isSelected ? "green" : "red";
   return (
     <group ref={group} {...props} dispose={null}>
+      <spotLight
+        color={changedColor}
+        intensity={50}
+        angle={90}
+        penumbra={0}
+        position={[-5, 1, -6]}
+        rotation={[0, 0, 0]}
+        castShadow
+      />
       <group name="Scene">
         <group
           name="Sketchfab_model"
           position={[-3, -2, -5]}
           rotation={[-Math.PI / 2, 0, -Math.PI / 1]}
-          scale={0.1}
+          scale={0.12}
         >
           <group
             name="b65b724a173843eaa6ef8d2f80cf5bcbfbx"

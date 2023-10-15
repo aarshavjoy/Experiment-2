@@ -7,6 +7,7 @@ import React, { memo, useCallback, useRef } from "react";
 import { useGLTF, useAnimations } from "@react-three/drei";
 import { useFrame } from "react-three-fiber";
 import { useBox } from "@react-three/cannon";
+import { useSelector } from "react-redux";
 
 const Character = (props) => {
   const [position, setPosition] = React.useState([-10, -2, 2.6]);
@@ -16,6 +17,8 @@ const Character = (props) => {
   const { nodes, materials, animations } = useGLTF(
     "../../../textures/character2.glb"
   );
+  const { userIntract } = useSelector((state) => state.BlockChainReducer);
+
   const [ref, api] = useBox(() => ({
     ...props,
     type: "Kinematic",
@@ -34,10 +37,17 @@ const Character = (props) => {
   React.useEffect(() => {
     actions[names[3]].reset().fadeIn(0.5).play();
   }, []);
+  React.useEffect(() => {
+    if (userIntract) {
+      setRotation([0, 60, 0]);
+    } else {
+      setRotation([0, 190, 0]);
+    }
+  }, [userIntract]);
 
   useFrame(() => {
     const speed = 0.02;
-    const Rspeed = 0.02;
+    const Rspeed = 0.01;
     const newPosition = [...position];
     const newRotation = [...rotation];
     if (group.current) {
@@ -56,7 +66,7 @@ const Character = (props) => {
     }
   });
   return (
-    <group onClick={console.log("hello")} ref={ref}>
+    <group ref={ref}>
       <group ref={group} {...props} dispose={null}>
         <group name="Scene">
           <group

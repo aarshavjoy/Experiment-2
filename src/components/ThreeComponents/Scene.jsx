@@ -11,6 +11,15 @@ import Loading from "../Loading";
 import Table from "./Objects/Table";
 import Cupboard from "./cupboard";
 import Light from "./Objects/Light";
+import Door from "./Objects/Door";
+import Computer from "./Objects/Computer";
+import {
+  updateSelectedCardIndex,
+  updateUserInteract,
+} from "../../redux/slices/BlockChainReducer";
+import { useDispatch, useSelector } from "react-redux";
+import TableLamp from "./Objects/Table_lamp";
+import { objectData } from "../../data/objectData";
 
 const intialState = () => {
   return {
@@ -24,7 +33,10 @@ const Scene = () => {
   const [state, setState] = useState(intialState());
   const { id, isLeft, color } = state;
   console.log(state.id);
-
+  const dispatch = useDispatch();
+  const { selectedCardIndex, userIntract } = useSelector(
+    (state) => state.BlockChainReducer
+  );
   React.useEffect(() => {
     if (isLeft) {
       const walk = setTimeout(() => {
@@ -41,25 +53,36 @@ const Scene = () => {
     }
   }, [isLeft]);
   const onHandleClick = (type) => {
-    switch (type) {
-      case "left":
-        setState((prev) => ({
-          ...prev,
-          isLeft: !state.isLeft,
-        }));
+    if (!userIntract) {
+      switch (type) {
+        case "left":
+          setState((prev) => ({
+            ...prev,
+            isLeft: !state.isLeft,
+          }));
+          break;
 
-        break;
-
-      default:
-        break;
+        default:
+          break;
+      }
+    } else {
+      alert("Complete the task ");
     }
   };
+  console.log(selectedCardIndex);
   useEffect(() => {
+    const nextIndex =
+      selectedCardIndex.length > 0
+        ? (selectedCardIndex[selectedCardIndex.length - 1] + 1) % 4
+        : 0;
+
     if (id > 0 && !isLeft) {
       setState((prev) => ({
         ...prev,
         color: "green",
       }));
+      dispatch(updateSelectedCardIndex([...selectedCardIndex, nextIndex]));
+      dispatch(updateUserInteract(true));
     }
   }, [id, isLeft]);
   const wood = useLoader(THREE.TextureLoader, woodTexture);
@@ -71,7 +94,7 @@ const Scene = () => {
         marginTop: 19,
         width: "100%",
       }}
-      camera={{ fov: 17, position: [-12, 15, 50] }}
+      camera={{ fov: 17, position: [-18, 15, 50] }}
     >
       <Suspense fallback={<Loading />}>
         <ambientLight />
@@ -85,21 +108,26 @@ const Scene = () => {
               <Character
                 isLeft={state.isLeft}
                 state={state}
-                scale={[2.2, 2.2, 2.2]}
+                scale={[3, 3, 3]}
               />
             </group>
-            <Light />
-            {[1, 2, 3, 4].map((item) => {
+            <Door />
+
+            {objectData.map((item, index) => {
               return (
                 <group position={[-8, -2, 1]}>
                   <group position={[2.1, 0, 1]}>
-                    <Table position={[item * 4.4, 2, 0]} />
+                    <Table
+                      position={item.tablePosition}
+                      isSelected={selectedCardIndex.includes(index)}
+                    />
                   </group>
-                  <group position={[-3.5, -1.5, -4]}></group>
                 </group>
               );
             })}
             <Cupboard />
+
+            <Computer />
             {[1, 2, 3, 4].map((item) => {
               return <group position={[-8.5, -0.5, 2]}></group>;
             })}

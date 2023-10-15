@@ -6,15 +6,15 @@ const Cupboard = () => {
   const wood = useLoader(THREE.TextureLoader, woodTexture);
   return (
     <group>
-      <mesh position={[-4, 0.5, -3]}>
+      <mesh position={[-4.3, 0.5, -3]}>
         <boxGeometry args={[0.1, 5, 5]} />
         <meshStandardMaterial map={wood} />
       </mesh>
-      <mesh position={[0.5, 0.5, -3]}>
+      <mesh position={[0.05, 0.5, -3]}>
         <boxGeometry args={[0.1, 5, 5]} />
         <meshStandardMaterial map={wood} />
       </mesh>
-      <mesh position={[4.8, 0.5, -3]}>
+      <mesh position={[4.5, 0.5, -3]}>
         <boxGeometry args={[0.1, 5, 5]} />
         <meshStandardMaterial map={wood} />
       </mesh>
