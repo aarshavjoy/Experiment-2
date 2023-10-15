@@ -9,7 +9,7 @@ import { useGLTF } from "@react-three/drei";
 export default function Light(props) {
   const { nodes, materials } = useGLTF("../../../textures/light.glb");
   return (
-    <group position={[0, 4, -8]} scale={0.1} {...props} dispose={null}>
+    <group position={[0, 5.5, -8]} scale={0.1} {...props} dispose={null}>
       <spotLight
         color={"yellow"}
         intensity={500}

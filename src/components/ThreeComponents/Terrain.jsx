@@ -24,16 +24,13 @@ const Terrain = (props) => {
         <boxGeometry args={[0.97, 0.97, 0.01]} />
         <meshBasicMaterial map={texture} />
       </mesh>
-      <mesh position={[-10.8, 1.5, 0]}>
-        <boxGeometry args={[0.5, 7, 18]} />
+      //
+      <mesh position={[10.5, 2.1, 0]}>
+        <boxGeometry args={[0.5, 8, 17.5]} />
         <meshBasicMaterial map={wallTexture} />
       </mesh>
-      <mesh position={[10.8, 1.5, 0]}>
-        <boxGeometry args={[0.5, 7, 18]} />
-        <meshBasicMaterial map={wallTexture} />
-      </mesh>
-      <mesh position={[0, 1.5, -8.5]}>
-        <boxGeometry args={[21, 7, 1]} />
+      <mesh position={[-0.08, 2.1, -8.4]}>
+        <boxGeometry args={[21.3, 8, 1]} />
         <meshBasicMaterial map={wallTexture} />
       </mesh>
     </group>

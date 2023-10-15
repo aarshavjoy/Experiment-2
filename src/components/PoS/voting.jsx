@@ -9,7 +9,7 @@ const Voting = ({setShowCaptcha,setCaptcha}) => {
 //         console.log('clicked')
 //     })
 
-// },[])
+  // },[])
 
     return (
         <div>

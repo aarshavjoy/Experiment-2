@@ -5,10 +5,16 @@ import Divider from "../Divider";
 import Token from "../components/PoW/Token";
 
 import Scene from "./ThreeComponents/Scene";
+import { useDispatch, useSelector } from "react-redux";
+import { updateUserInteract } from "../redux/slices/BlockChainReducer";
 import Voting from "./PoS/voting";
-import Tables from "./PoW/Table"
 
 const PowComponent = () => {
+  const { userIntract } = useSelector((state) => state.BlockChainReducer);
+
+  const dispatch = useDispatch();
+
+  console.log(userIntract);
   const isLoging = true;
   const [showTokenDialog, setShowTokenDialog] = useState(false);
   const [showLogin, setShowLogin] = useState(false);
@@ -30,13 +36,16 @@ const PowComponent = () => {
 
   const closeTokenDialog = () => {
     setShowTokenDialog(false);
-    setCurrentPage("voting machine");
+    setCurrentPage("candidate");
+    dispatch(updateUserInteract(false));
   };
   let pageContent = null;
 
   switch (currentPage) {
     case "login":
-      pageContent = <Login generateRandomToken={generateRandomToken} />;
+      pageContent = userIntract && (
+        <Login generateRandomToken={generateRandomToken} />
+      );
       break;
     case "token":
       pageContent = <Token token={randomToken} onClose={closeTokenDialog} />;
@@ -46,7 +55,7 @@ const PowComponent = () => {
       break;
        
     default:
-      pageContent = <Login generateRandomToken={generateRandomToken} />;
+      pageContent = null;
   }
   return (
     <div className="App">

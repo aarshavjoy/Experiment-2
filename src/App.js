@@ -5,6 +5,8 @@ import MainContainer from "./components/common/MainContainer";
 import VoterMachine from "./components/common/VotingMachine";
 import LoginAuth from "./components/PoW/LoginAuth";
 import Main from "./components/PoW/Main";
+import { Provider } from "react-redux";
+import { store } from "./redux/store";
 
 function App() {
   return (
@@ -13,10 +15,12 @@ function App() {
         <div className="container-fluid container-full-height">
           <Suspense>
             {/* <MainContainer /> */}
-            <VoterMachine/>
+            {/* <VoterMachine/> */}
             {/* <Main/> */}
+            <Provider store={store}>
+              <MainContainer />
+            </Provider>
           </Suspense>
-
         </div>
       </div> 
     </>
