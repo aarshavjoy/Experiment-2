@@ -2,6 +2,9 @@ import { Suspense } from "react";
 import "./App.css";
 
 import MainContainer from "./components/common/MainContainer";
+import VoterMachine from "./components/common/VotingMachine";
+import LoginAuth from "./components/PoW/LoginAuth";
+import Main from "./components/PoW/Main";
 
 function App() {
   return (
@@ -9,11 +12,13 @@ function App() {
       <div className="App">
         <div className="container-fluid container-full-height">
           <Suspense>
-            <MainContainer />
+            {/* <MainContainer /> */}
+            <VoterMachine/>
+            {/* <Main/> */}
           </Suspense>
 
         </div>
-      </div>
+      </div> 
     </>
   );
 }

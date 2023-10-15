@@ -1,31 +1,27 @@
 import React from 'react';
 import PosComponent from '../PosComponent';
 import PowComponent from '../PowComponent';
-import Divider from '../../Divider';
-import { FormControlLabel, FormGroup, Switch } from '@mui/material';
+
+import { useState } from 'react';
 
 const MainContainer = () => {
-    const [showPoW, setShowPow] = React.useState(false)
-    const onHandleChange = ()=>[
-        setShowPow()
-    ]
+    const [showPoW, setShowPoW] = useState(true); 
+
+    const handlePowClick = () => {
+        setShowPoW(true);
+    }
+
+    const handlePosClick = () => {
+        setShowPoW(false);
+    }
+
     return (
         <div>
-          {/* <FormGroup>
-  <FormControlLabel control={<Switch defaultChecked />} label="Proof of Stake" />
-  
- 
-</FormGroup> */}
-
-            {/* switch */}
-
-            <div>
-            <button>Pow</button>
-            <button>Pos</button>
+            <div className='switches'>
+                <button className='powbtn' onClick={handlePowClick}>POW</button>
+                <button className='posbtn' onClick={handlePosClick}>POS</button>
             </div>
             {showPoW ? <PowComponent /> : <PosComponent />}
-
-
         </div>
     );
 }

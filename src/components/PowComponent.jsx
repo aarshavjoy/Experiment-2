@@ -3,15 +3,22 @@ import { generateRandomToken } from "../utilts";
 import Login from "./common/Login";
 import Divider from "../Divider";
 import Token from "../components/PoW/Token";
-import Candidate from "../components/PoW/Candidate";
+
 import Scene from "./ThreeComponents/Scene";
+import Voting from "./PoS/voting";
+import Tables from "./PoW/Table"
 
 const PowComponent = () => {
   const isLoging = true;
   const [showTokenDialog, setShowTokenDialog] = useState(false);
+  const [showLogin, setShowLogin] = useState(false);
   const [randomToken, setRandomToken] = useState("");
   const [currentPage, setCurrentPage] = useState("login");
+  
+ 
 
+  
+ 
   const generateRandomToken = () => {
     const min = 10000;
     const max = 99999;
@@ -23,7 +30,7 @@ const PowComponent = () => {
 
   const closeTokenDialog = () => {
     setShowTokenDialog(false);
-    setCurrentPage("candidate");
+    setCurrentPage("voting machine");
   };
   let pageContent = null;
 
@@ -34,9 +41,10 @@ const PowComponent = () => {
     case "token":
       pageContent = <Token token={randomToken} onClose={closeTokenDialog} />;
       break;
-    case "candidate":
-      pageContent = <Candidate />;
+    case "voting machine":
+      pageContent = <Voting showLogin={showLogin} setShowLogin={setShowLogin}  />;
       break;
+       
     default:
       pageContent = <Login generateRandomToken={generateRandomToken} />;
   }

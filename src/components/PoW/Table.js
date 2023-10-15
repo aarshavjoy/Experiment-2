@@ -1,12 +1,12 @@
 import React from 'react';
 
-function Tables() {
+function Tables({ userName, time, status }) {
   return (
     <table className="table">
       <thead>
         <tr>
           <th colSpan="3" className="thank-you-note">
-           Thank you for voting!
+            Thank you for voting!
           </th>
         </tr>
         <tr>
@@ -17,24 +17,14 @@ function Tables() {
       </thead>
       <tbody>
         <tr>
-          <td>Mark</td>
-          <td>12.00am</td>
+          <td>{userName}</td>
+          <td>{time}</td>
           <td>
-            <i className="fa-regular fa-circle-check fa-xl"></i>
-          </td>
-        </tr>
-        <tr>
-          <td>Jacob</td>
-          <td>9.45am</td>
-          <td>
-            <i className="fa-regular fa-circle-check fa-xl"></i>
-          </td>
-        </tr>
-        <tr>
-          <td>Susan</td>
-          <td>9.00am</td>
-          <td>
-            <i className="fa-regular fa-circle-check fa-xl"></i>
+            {status ? (
+              <i className="fa-regular fa-circle-check fa-xl"></i>
+            ) : (
+              <i className="fa-regular fa-circle-times fa-xl"></i>
+            )}
           </td>
         </tr>
       </tbody>

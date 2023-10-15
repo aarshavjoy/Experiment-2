@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-function CustomCaptcha() {
+function CustomCaptcha({setShowCaptcha}) {
   const [captchaValue, setCaptchaValue] = useState('');
   const [generatedCaptcha, setGeneratedCaptcha] = useState(generateRandomCaptcha());
 
@@ -21,6 +21,7 @@ function CustomCaptcha() {
 
   const handleSubmit = () => {
     if (captchaValue === generatedCaptcha) {
+      setShowCaptcha(false)
       alert('Captcha Matched');
     } else {
       alert('Captcha Does Not Match');
@@ -31,14 +32,12 @@ function CustomCaptcha() {
   return (
     <div className="card capcard">
       <div className="card-body">
-        <div className="captcha-container">
+        <div className="captcha-container"> 
           <div className="captcha card-text">
             <div className="captcha-text">
               {generatedCaptcha}
             </div>
-            <div className="captcha-noise">
-              {/* Add noise or lines here */}
-            </div>
+            
           </div>
           <a onClick={handleRefresh}>
             Refresh

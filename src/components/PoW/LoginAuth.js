@@ -1,31 +1,36 @@
-
 import React, { useState } from 'react';
 
-function Login({ generateRandomToken}) {
+function LoginAuth(props) {
   const [name, setName] = useState('');
-  const [voterid, setVoterid] = useState('');
+  const [officialID, setOfficialID] = useState('');
   const [errorMessage, setErrorMessage] = useState('');
 
   const handleNameChange = (e) => {
     setName(e.target.value);
   };
 
-  const handleVoteridChange = (e) => {
-    setVoterid(e.target.value);
+  const handleOfficialIDChange = (e) => {
+    setOfficialID(e.target.value);
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    const pattern = /^[A-Za-z]{4}\d{6}$/;
+  
+    const idPattern = /^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[\W_]).{6,}$/;
 
-    if (pattern.test(voterid)) {
+    if (name.trim() === '') {
       
-      generateRandomToken();
-      setErrorMessage('');
+      setErrorMessage('Please enter your name.');
+    } else if (!idPattern.test(officialID)) {
+      setErrorMessage(
+        'Invalid official ID. ID should contain a mix of uppercase and lowercase letters, numbers, and special characters, with a minimum length of 6 characters.'
+      );
     } else {
-     
-      setErrorMessage('Invalid Voter ID. ID Should Start With 4 Letters Followed With 6 Numbers.');
+      
+      
+      setErrorMessage('');
+      props.onButtonClick({ name });
     }
   };
 
@@ -44,17 +49,17 @@ function Login({ generateRandomToken}) {
           />
         </div>
         <div className="form-group">
-          <label>Voter ID:</label>
+          <label>Official ID:</label>
           <input
             type="text"
             className="form-control"
-            placeholder="E.g; ABXD123456"
-            value={voterid}
-            onChange={handleVoteridChange}
+            placeholder="E.g; Ab1$cd"
+            value={officialID}
+            onChange={handleOfficialIDChange}
             required
           />
         </div>
-        <button type="submit" className="btn btns ">
+        <button type="submit" className="btn btns">
           Login
         </button>
       </form>
@@ -63,4 +68,4 @@ function Login({ generateRandomToken}) {
   );
 }
 
-export default Login;
+export default LoginAuth;
