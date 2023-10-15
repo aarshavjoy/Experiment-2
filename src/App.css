@@ -139,7 +139,7 @@ margin-top:20px;
   width:10%;
 }
 .status {
-  opacity: 0;
+
   
   transition:  width 2s,opacity 0.8s ease-in, height 0.8s ease-in-out;
   color: white;

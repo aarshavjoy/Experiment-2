@@ -19,7 +19,7 @@ function App() {
             </Provider>
           </Suspense>
         </div>
-      </div> 
+      </div>
     </>
   );
 }

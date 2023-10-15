@@ -9,10 +9,10 @@ import { useGLTF } from "@react-three/drei";
 export default function Light(props) {
   const { nodes, materials } = useGLTF("../../../textures/light.glb");
   return (
-    <group position={[0, 5.5, -8]} scale={0.1} {...props} dispose={null}>
+    <group position={[10, 5.5, -1]} scale={0.1} {...props} dispose={null}>
       <spotLight
-        color={"yellow"}
-        intensity={500}
+        color={"white"}
+        intensity={0}
         angle={5}
         penumbra={0}
         position={[-11, 0, 0]}
@@ -22,7 +22,7 @@ export default function Light(props) {
       <mesh
         geometry={nodes.Object_2.geometry}
         material={materials.Lamp}
-        rotation={[-Math.PI / 0.5, 0, 0]}
+        rotation={[-Math.PI / 0.5, -1.6, 0]}
       />
     </group>
   );

@@ -6,38 +6,32 @@ import { useEffect } from 'react';
 const VoterMachine = () => {
   const [isVerified, setIsVerified] = useState(false);
   const [showCaptcha, setShowCaptcha] = useState(false);
- const[showLogin,setShowLogin]=useState(false);
- const [showSVG, setShowSVG] = useState(true);
- 
- 
+  const [showLogin, setShowLogin] = useState(false);
+  const [showSVG, setShowSVG] = useState(true);
+
   const audio = new Audio(sound);
 
   const onHandleTestClick = () => {
- document.getElementById('testLight').style.fill='red';
- audio.play();
- setIsVerified(true)
- setShowSVG(true);
- }
+    document.getElementById("testLight").style.fill = "red";
+    audio.play();
+    setIsVerified(true);
+    setShowSVG(true);
+  };
 
-  // const handleLoginClick =()=>{
-  //   setShowLogin(true);
-  // }
- 
   useEffect(() => {
     const audioEnded = () => {
       setShowSVG(false);
       setTimeout(() => {
         setShowLogin(true);
-      }, 4000);
+      }, 1000);
     };
 
-    audio.addEventListener('ended', audioEnded);
+    audio.addEventListener("ended", audioEnded);
 
     return () => {
-      audio.removeEventListener('ended', audioEnded);
+      audio.removeEventListener("ended", audioEnded);
     };
   }, []);
-  
 
   return (<>
 
@@ -126,8 +120,13 @@ const VoterMachine = () => {
     {showLogin && (
         <div className={`status ${isVerified ? 'show' : ''}`}>
           <p className="status">System Tampered!</p>
-          <p className="status">Please login to the official portal immediately due to system tampering.</p>
-          <button className="btn btnss" onClick={() => setShowLogin(true)}>Login</button>
+          <p className="status">
+            Please login to the official portal immediately due to system
+            tampering.
+          </p>
+          <button className="btn btnss" onClick={() => setShowLogin(true)}>
+            Login
+          </button>
         </div>
       )}
 </>

@@ -6,11 +6,17 @@ import Token from "../components/PoW/Token";
 
 import Scene from "./ThreeComponents/Scene";
 import { useDispatch, useSelector } from "react-redux";
-import { updateUserInteract } from "../redux/slices/BlockChainReducer";
+import {
+  updateSelectedCardIndex,
+  updateTask,
+  updateUserInteract,
+} from "../redux/slices/BlockChainReducer";
 import Voting from "./PoS/voting";
 
 const PowComponent = () => {
-  const { userIntract } = useSelector((state) => state.BlockChainReducer);
+  const { userIntract, task, selectedCardIndex } = useSelector(
+    (state) => state.BlockChainReducer
+  );
 
   const dispatch = useDispatch();
 
@@ -20,11 +26,7 @@ const PowComponent = () => {
   const [showLogin, setShowLogin] = useState(false);
   const [randomToken, setRandomToken] = useState("");
   const [currentPage, setCurrentPage] = useState("login");
-  
- 
 
-  
- 
   const generateRandomToken = () => {
     const min = 10000;
     const max = 99999;
@@ -33,17 +35,23 @@ const PowComponent = () => {
     setShowTokenDialog(true);
     setCurrentPage("token");
   };
-
+  console.log(userIntract, task, "hello");
   const closeTokenDialog = () => {
+    const nextIndex =
+      selectedCardIndex.length > 0
+        ? (selectedCardIndex[selectedCardIndex.length - 1] + 1) % 4
+        : 0;
     setShowTokenDialog(false);
-    setCurrentPage("candidate");
+    setCurrentPage("voting machine");
+    dispatch(updateSelectedCardIndex([...selectedCardIndex, nextIndex]));
     dispatch(updateUserInteract(false));
+    dispatch(updateTask(2));
   };
   let pageContent = null;
-
+  console.log(currentPage);
   switch (currentPage) {
     case "login":
-      pageContent = userIntract && (
+      pageContent = userIntract && task === 1 && (
         <Login generateRandomToken={generateRandomToken} />
       );
       break;
@@ -51,9 +59,9 @@ const PowComponent = () => {
       pageContent = <Token token={randomToken} onClose={closeTokenDialog} />;
       break;
     case "voting machine":
-      pageContent = <Voting showLogin={showLogin} setShowLogin={setShowLogin}  />;
+      pageContent = userIntract && task === 2 && <Voting />;
       break;
-       
+
     default:
       pageContent = null;
   }
@@ -66,9 +74,7 @@ const PowComponent = () => {
           <div className="col-md-9 left-column">
             <Scene />
           </div>
-          <div className="col-md-3 right-column">
-            {isLoging && <>{pageContent}</>}
-          </div>
+          <div className="col-md-3 right-column">{pageContent}</div>
         </div>
       </div>
     </div>
