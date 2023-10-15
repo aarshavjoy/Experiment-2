@@ -48,11 +48,12 @@ html, body {
 }
 .card-text{
   text-align: center;
-  font-weight: 800;
+  font-weight: 600;
 }
 
 .card-title{
   text-align: center;
+  font-size: x-large;
 }
 
 .cards{
@@ -66,7 +67,7 @@ html, body {
 }
 .btns{
    margin-left:35%;
-   background-color: #22eff1;
+   background-color: #0a5566;
 }
 .tokencard{
   width: 250px;
@@ -151,9 +152,9 @@ margin-top:20px;
   border-radius: 10px;
   font-weight: 900;
   font-size: x-large;
-
-
-
+}
+.alerts{
+margin-top:10%;
 }
 
 .status.show {
@@ -171,4 +172,10 @@ margin-top:20px;
 }
 .denied{
 cursor: pointer;
+}
+.material-icons{
+  text-align: center;
+  margin-top:10%;
+  font-size:50px;
+  color:red;
 }

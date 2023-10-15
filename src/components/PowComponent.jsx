@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { generateRandomToken } from "../utilts";
-import Login from "./Common/Login";
+import Login from "./common/Login";
 import Divider from "../Divider";
 import Token from "../components/PoW/Token";
 
@@ -23,7 +23,7 @@ const PowComponent = () => {
   console.log(userIntract);
   const isLoging = true;
   const [showTokenDialog, setShowTokenDialog] = useState(false);
-  const [showLogin, setShowLogin] = useState(false);
+
   const [randomToken, setRandomToken] = useState("");
   const [currentPage, setCurrentPage] = useState("login");
 

@@ -5,7 +5,7 @@ import Tables from './Table';
 import Divider from '../../Divider';
 import Scene from "../ThreeComponents/Scene";
 
-function Main() {
+function Main({ isVisible }) {
   const isLogging = true;
   const [currentPages, setCurrentPages] = useState("login");
   const [userName, setUserName] = useState("");
@@ -46,7 +46,7 @@ const showTable = (votingData) => {
     }
 
     return (
-        <div className="App">
+      <div className="App" style={{ display: isVisible ? 'block' : 'none' }}>
           {/* <Divider title={"Proof of Work"} /> */}
     
           <div className="container-fluid container-full-height">
