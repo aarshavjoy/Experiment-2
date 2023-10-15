@@ -1,8 +1,8 @@
 import { Suspense } from "react";
 import "./App.css";
 
-import MainContainer from "./components/common/MainContainer";
-import VoterMachine from "./components/common/VotingMachine";
+import MainContainer from "./components/Common/MainContainer";
+
 import LoginAuth from "./components/PoW/LoginAuth";
 import Main from "./components/PoW/Main";
 import { Provider } from "react-redux";
@@ -22,7 +22,7 @@ function App() {
             </Provider>
           </Suspense>
         </div>
-      </div> 
+      </div>
     </>
   );
 }

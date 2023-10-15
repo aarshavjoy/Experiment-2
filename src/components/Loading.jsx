@@ -4,14 +4,14 @@ import { RevolvingDot } from "react-loader-spinner";
 
 const Loading = () => {
   return (
-    <Html color="#1b1b1b" position={[0, 1.5, 0]}>
+    <Html color="#022027" position={[0, 1.5, 0]}>
       <RevolvingDot
         radius="45"
         strokeWidth="3"
-        color="red"
-        secondaryColor="green"
+        color="white"
+        secondaryColor="#1bfaff"
         ariaLabel="revolving-dot-loading"
-        wrapperStyle={{ width: 150, height: "150px", background: "#1b1b1b" }}
+        wrapperStyle={{ width: 150, height: "150px", background: "#022027" }}
         wrapperClass=""
         visible={true}
       />

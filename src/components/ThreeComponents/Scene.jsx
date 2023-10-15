@@ -4,7 +4,7 @@ import { Physics } from "@react-three/cannon";
 import { useLoader, Canvas } from "react-three-fiber";
 import woodTexture from "../../textures/wood.jpg";
 import RoundBox from "../ThreeComponents/Objects/RoundBox";
-import { OrbitControls } from "@react-three/drei";
+import { Html, OrbitControls, Text3D } from "@react-three/drei";
 import Character from "./Objects/Character";
 import Terrain from "./Terrain";
 import Loading from "../Loading";
@@ -20,6 +20,7 @@ import {
 import { useDispatch, useSelector } from "react-redux";
 import TableLamp from "./Objects/Table_lamp";
 import { objectData } from "../../data/objectData";
+import Flower from "./Objects/Flower_in_a_pot";
 
 const intialState = () => {
   return {
@@ -69,19 +70,14 @@ const Scene = () => {
       alert("Complete the task ");
     }
   };
-  console.log(selectedCardIndex);
-  useEffect(() => {
-    const nextIndex =
-      selectedCardIndex.length > 0
-        ? (selectedCardIndex[selectedCardIndex.length - 1] + 1) % 4
-        : 0;
 
+  useEffect(() => {
     if (id > 0 && !isLeft) {
       setState((prev) => ({
         ...prev,
         color: "green",
       }));
-      dispatch(updateSelectedCardIndex([...selectedCardIndex, nextIndex]));
+
       dispatch(updateUserInteract(true));
     }
   }, [id, isLeft]);
@@ -89,12 +85,12 @@ const Scene = () => {
   return (
     <Canvas
       style={{
-        background: "#1b1b1b",
+        background: "#022027",
         height: "81vh",
         marginTop: 19,
         width: "100%",
       }}
-      camera={{ fov: 17, position: [-18, 15, 50] }}
+      camera={{ fov: 18, position: [-30, 6, 50] }}
     >
       <Suspense fallback={<Loading />}>
         <ambientLight />
@@ -112,7 +108,7 @@ const Scene = () => {
               />
             </group>
             <Door />
-
+            <Flower position={[-10, -2, -7]} />
             {objectData.map((item, index) => {
               return (
                 <group position={[-8, -2, 1]}>
@@ -121,21 +117,30 @@ const Scene = () => {
                       position={item.tablePosition}
                       isSelected={selectedCardIndex.includes(index)}
                     />
+                    {item.Board.map((board, index) => {
+                      return (
+                        <group>
+                          <mesh position={board.position}>
+                            <boxGeometry args={[3, 1, 0]} />
+                            <meshBasicMaterial />
+                          </mesh>
+                        </group>
+                      );
+                    })}
                   </group>
                 </group>
               );
             })}
             <Cupboard />
 
-            <Computer />
             {[1, 2, 3, 4].map((item) => {
               return <group position={[-8.5, -0.5, 2]}></group>;
             })}
-
+            <Light />
             <Terrain />
           </group>
           <OrbitControls />
-          <color args={["#1b1b1b"]} attach="background" />
+          <color args={["#022027"]} attach="background" />
         </Physics>
       </Suspense>
     </Canvas>
