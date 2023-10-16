@@ -5,7 +5,7 @@ const Counting = () => {
     const [isCounted, setIsCounted] = useState(false);
     const [reCounted, setReCounted] = useState(false);
     const [serialNumber, setSerialNumber] = useState('');
-    const [reEnteredSerialNumber, setReEnteredSerialNumber] = useState(''); // New state variable for the second input
+    const [reEnteredSerialNumber, setReEnteredSerialNumber] = useState(''); 
     const [errorMessage, setErrorMessage] = useState(''); 
 
     const handleCountClick = (e) => {
@@ -21,7 +21,7 @@ const Counting = () => {
 
     const handleReCountClick = (e) => {
         e.preventDefault();
-        if (reEnteredSerialNumber === "VMSN4321") { // Use the new state variable here
+        if (reEnteredSerialNumber === "VMSN4321") { 
             setReCounted(true);
             setErrorMessage('');
         } else {
@@ -33,7 +33,7 @@ const Counting = () => {
     return (
         <>
             <div>
-                {/* Image Placeholder */}
+             
             </div>
             <center>
                 <h5 style={{ color: "white" }}>Count Verification</h5>
@@ -54,7 +54,7 @@ const Counting = () => {
                     </button>
                 </div>
 
-                {/* Display error message if any */}
+              
                 {errorMessage && <div style={{color: 'red'}}>{errorMessage}</div>}
 
                 {isCounted && (
@@ -70,9 +70,9 @@ const Counting = () => {
                     <input 
                         type="text" 
                         className="form-control vote-ip" 
-                        placeholder="Re-Enter the Serial No" 
-                        value={reEnteredSerialNumber} // Updated to use the new state variable
-                        onChange={(e) => setReEnteredSerialNumber(e.target.value)} // Updated to use the new state variable
+                        placeholder="Re-Enter S.N" 
+                        value={reEnteredSerialNumber} 
+                        onChange={(e) => setReEnteredSerialNumber(e.target.value)} 
                         aria-label="Re-enter Serial Number" 
                         aria-describedby="button-addon3"
                     />

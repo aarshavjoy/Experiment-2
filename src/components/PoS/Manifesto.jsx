@@ -72,7 +72,8 @@ export default function Manifesto(props) {
             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse
             malesuada lacus ex, sit amet .
             <div className='manifesto-btn'>
-                   <button type="button" class="btn btn-outline-light manifesto-button "  onClick={props.onSelectClick}>Select</button>
+            <button onClick={props.onCandidateDisplay}>Select</button>
+
                    </div>
           </Typography>
         </AccordionDetails>

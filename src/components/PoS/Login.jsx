@@ -1,11 +1,17 @@
-
-import React, { useState } from 'react';
+import React, { useState } from "react";
+import {
+  updateSelectedCardIndex,
+  updateTask,
+  updateUserInteract,
+} from "../../redux/slices/BlockChainReducer";
+import { useDispatch, useSelector } from "react-redux";
 
 function Login({ onSuccessfulLogin, onAuthorityLoginClick }) {
-  const [name, setName] = useState('');
-  const [voterid, setVoterid] = useState('');
-  const [errorMessage, setErrorMessage] = useState('');
-
+  const { selectedCardIndex } = useSelector((state) => state.BlockChainReducer);
+  const [name, setName] = useState("");
+  const [voterid, setVoterid] = useState("");
+  const [errorMessage, setErrorMessage] = useState("");
+  const dispatch = useDispatch();
   const handleNameChange = (e) => {
     setName(e.target.value);
   };
@@ -15,60 +21,73 @@ function Login({ onSuccessfulLogin, onAuthorityLoginClick }) {
   };
 
   const handleSubmit = (e) => {
+    const nextIndex =
+      selectedCardIndex.length > 0
+        ? (selectedCardIndex[selectedCardIndex.length - 1] + 1) % 4
+        : 0;
     e.preventDefault();
     onSuccessfulLogin();
+    dispatch(updateSelectedCardIndex([...selectedCardIndex, nextIndex]));
+    dispatch(updateUserInteract(false));
+    dispatch(updateTask(2));
 
     const pattern = /^[A-Za-z]{4}\d{6}$/;
 
     if (pattern.test(voterid)) {
       // Voter ID is valid, generate the random token
-     
-      setErrorMessage('');
+
+      setErrorMessage("");
     } else {
-     
-      setErrorMessage('Invalid Voter ID. ID Should Start With 4 Letters Followed With 6 Numbers.');
+      setErrorMessage(
+        "Invalid Voter ID. ID Should Start With 4 Letters Followed With 6 Numbers."
+      );
     }
   };
 
   return (
     <>
-    <div className="login-container">
-      <form onSubmit={handleSubmit}>
-        <div className="form-group">
-          <label>Name:</label>
-          <input
-            type="text"
-            className="form-control"
-            placeholder="Enter Name"
-            value={name}
-            onChange={handleNameChange}
-            required
-          />
-        </div>
-        <div className="form-group">
-          <label>Voter ID:</label>
-          <input
-            type="text"
-            className="form-control"
-            placeholder="E.g; ABXD123456"
-            value={voterid}
-            onChange={handleVoteridChange}
-            required
-          />
-        </div>
-        <button type="submit" className="btn btns " >
-          Login
-        </button>
-      </form>
-      {errorMessage && <div className="alert alert-danger mt-3">{errorMessage}</div>}
-    </div>
-    
-    <div className="mt-3" style={{ marginLeft: "50%" }}>
-        <button onClick={onAuthorityLoginClick} className="authority-login-link">
+      <div className="login-container">
+        <form onSubmit={handleSubmit}>
+          <div className="form-group">
+            <label>Name:</label>
+            <input
+              type="text"
+              className="form-control"
+              placeholder="Enter Name"
+              value={name}
+              onChange={handleNameChange}
+              required
+            />
+          </div>
+          <div className="form-group">
+            <label>Voter ID:</label>
+            <input
+              type="text"
+              className="form-control"
+              placeholder="E.g; ABXD123456"
+              value={voterid}
+              onChange={handleVoteridChange}
+              required
+            />
+          </div>
+          <button type="submit" className="btn btns ">
+            Login
+          </button>
+        </form>
+        {errorMessage && (
+          <div className="alert alert-danger mt-3">{errorMessage}</div>
+        )}
+      </div>
+
+      <div className="mt-3" style={{ marginLeft: "50%" }}>
+        <button
+          onClick={onAuthorityLoginClick}
+          className="authority-login-link"
+        >
           Login as authority
         </button>
       </div>
-      </>
+    </>
   );
 }
 

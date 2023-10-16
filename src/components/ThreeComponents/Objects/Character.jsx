@@ -35,7 +35,7 @@ const Character = (props) => {
   }, [userIntract]);
 
   useFrame(() => {
-    const speed = 0.02;
+    const speed = 0.04;
     const newPosition = [...position];
     if (group.current) {
       group.current.position.set(...position);

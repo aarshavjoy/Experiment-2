@@ -5,6 +5,11 @@ const initialState = {
   userIntract: false,
   task: 1,
   ifClickLeft: false,
+  candidatesList: [
+    { id: 1, name: "Amit Trivedi", checks: [true, true, true], verified: true },
+    { id: 2, name: "Vikram Patel", checks: [true, true, true], verified: true },
+    { id: 3, name: "Geeta Jeeva", checks: [true, true, true], verified: true },
+  ],
 };
 
 const BlockChainReducer = createSlice({
@@ -24,9 +29,18 @@ const BlockChainReducer = createSlice({
       state.selectedCardIndex = [];
       state.task = 1;
       state.userIntract = false;
+      state.ifClickLeft = false;
     },
     onClickLeft: (state, action) => {
       state.ifClickLeft = action.payload;
+    },
+    toggleCheck: (state, action) => {
+      const candidate = state.candidatesList.find(
+        (c) => c.id === action.payload.candidateId
+      );
+      candidate.checks[action.payload.checkIndex] =
+        !candidate.checks[action.payload.checkIndex];
+      candidate.verified = candidate.checks.every((check) => check);
     },
   },
 });
@@ -37,5 +51,7 @@ export const {
   updateTask,
   onClickLeft,
   clearState,
+  toggleCheck,
 } = BlockChainReducer.actions;
+
 export default BlockChainReducer.reducer;

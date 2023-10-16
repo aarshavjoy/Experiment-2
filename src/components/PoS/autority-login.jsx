@@ -41,7 +41,7 @@ function AuthLogin(props) {
                     />
                 </div>
                 <div className="form-group">
-                    <label>Voter ID:</label>
+                    <label>Reg ID:</label>
                     <input
                         type="text"
                         className="form-control"

@@ -47,7 +47,7 @@ const Scene = () => {
           id: 1,
         }));
         dispatch(onClickLeft(!ifClickLeft));
-      }, 3400);
+      }, 3000);
 
       return () => {
         clearTimeout(walk);

@@ -2,6 +2,7 @@ import { Suspense } from "react";
 import "./App.css";
 
 import MainContainer from "./components/Common/MainContainer";
+
 import { Provider } from "react-redux";
 import { store } from "./redux/store";
 import Loading from "./components/Loading";
