@@ -28,14 +28,18 @@ const Character = (props) => {
   }, []);
   React.useEffect(() => {
     if (userIntract) {
+      const newPosition = [position[0] + 1, position[1], position[2]];
+      setPosition(newPosition);
       setRotation([0, 60, 0]);
     } else {
+      const newPosition = [...position];
+      setPosition(newPosition);
       setRotation([0, 190, 0]);
     }
   }, [userIntract]);
-
+  console.log(position, rotation, "hh");
   useFrame(() => {
-    const speed = 0.04;
+    const speed = 0.02;
     const newPosition = [...position];
     if (group.current) {
       group.current.position.set(...position);
