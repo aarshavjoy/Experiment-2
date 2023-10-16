@@ -16,7 +16,7 @@ export default function Alert() {
   return (
     <div className="alerts">
         {showAlert && (
-      <div className="card" style={{ width: '18rem' }}>
+      <div className="card alerts" style={{ width: '18rem' }}>
       <i className="material-icons">warning</i>
          <div className="card-body">
           <h5 className="card-title">Error</h5>

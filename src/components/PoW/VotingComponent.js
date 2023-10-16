@@ -131,7 +131,7 @@ const VotingComponent = ({userName, time, status,showTable }) => {
     </svg>
     {selectedPath && <Tables userName={userName} time={time} status={status} />}
           <div className={`status ${isVerified ? 'show' : ''}`}>
-    <p classname="status">voting machine is ready  and secure to use.</p>
+    <p classname="status">Voting machine is ready , please wait for captcha verification.</p>
   </div>
     </>}
   

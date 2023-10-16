@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import BasicAccordion from './PoS/Details';
 import Manifesto from './PoS/Manifesto';
 import Login from './PoS/Login';
-import Divider from '../Divider';
 import Scene from "./ThreeComponents/Scene";
 import Voting from './PoS/voting';
 import Counting from './PoS/Counting';
@@ -43,7 +42,6 @@ const PosComponent = () => {
 
     return (
         <>
-            <Divider title={"Proof of Stake"} />
             <div className='heading'>
                 {/* ... */}
             </div>

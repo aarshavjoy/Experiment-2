@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import LoginAuth from './LoginAuth';
 import VotingComponent from './VotingComponent'; 
 import Tables from './Table';
-import Divider from '../../Divider';
+import Divider from '../Divider';
 import Scene from "../ThreeComponents/Scene";
 
 function Main({ isVisible }) {
@@ -51,10 +51,10 @@ const showTable = (votingData) => {
     
           <div className="container-fluid container-full-height">
             <div className="row">
-              <div className="col-md-3 left-column">
+              <div className="col-md-1 left-column">
                 {/* <Scene /> */}
               </div>
-              <div className="col-md-8 right-column">
+              <div className="col-md-11 right-column">
                 <>{pageContent}</>
               </div>
             </div>
