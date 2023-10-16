@@ -90,7 +90,7 @@ const Scene = () => {
         marginTop: 19,
         width: "100%",
       }}
-      camera={{ fov: 18, position: [-30, 6, 50] }}
+      camera={{ fov: 15, position: [-50, 20, 50] }}
     >
       <Suspense fallback={<Loading />}>
         <ambientLight />
@@ -101,6 +101,16 @@ const Scene = () => {
               onClick={() => onHandleClick("left")}
               position={[0, 0.05, 0]}
             >
+              <spotLight
+                color={"white"}
+                intensity={50}
+                angle={60}
+                penumbra={0}
+                position={[-1, 1, 9]}
+                rotation={[0, 0, 0]}
+                castShadow
+              />
+
               <Character
                 isLeft={state.isLeft}
                 state={state}
@@ -123,6 +133,17 @@ const Scene = () => {
                           <mesh position={board.position}>
                             <boxGeometry args={[3, 1, 0]} />
                             <meshBasicMaterial />
+                            <Html position={[-0.5, 0.4, 0]}>
+                              <p
+                                style={{
+                                  color: "black",
+                                  fontWeight: "600",
+                                  fontSize: 12,
+                                }}
+                              >
+                                {board.title}
+                              </p>
+                            </Html>
                           </mesh>
                         </group>
                       );

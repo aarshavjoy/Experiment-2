@@ -16,7 +16,7 @@ export const objectData = [
     Board: [
       {
         id: 1,
-        title: "Tampered",
+        title: "Verification",
         position: [4, 6, -9.6],
       },
     ],
@@ -38,7 +38,7 @@ export const objectData = [
     Board: [
       {
         id: 1,
-        title: "THANKS",
+        title: "Table",
         position: [13, 6, -9.6],
       },
     ],
