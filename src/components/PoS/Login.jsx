@@ -1,7 +1,7 @@
 
 import React, { useState } from 'react';
 
-function Login({ onSuccessfulLogin }) {
+function Login({ onSuccessfulLogin, onAuthorityLoginClick }) {
   const [name, setName] = useState('');
   const [voterid, setVoterid] = useState('');
   const [errorMessage, setErrorMessage] = useState('');
@@ -31,6 +31,7 @@ function Login({ onSuccessfulLogin }) {
   };
 
   return (
+    <>
     <div className="login-container">
       <form onSubmit={handleSubmit}>
         <div className="form-group">
@@ -61,6 +62,13 @@ function Login({ onSuccessfulLogin }) {
       </form>
       {errorMessage && <div className="alert alert-danger mt-3">{errorMessage}</div>}
     </div>
+    
+    <div className="mt-3" style={{ marginLeft: "50%" }}>
+        <button onClick={onAuthorityLoginClick} className="authority-login-link">
+          Login as authority
+        </button>
+      </div>
+      </>
   );
 }
 

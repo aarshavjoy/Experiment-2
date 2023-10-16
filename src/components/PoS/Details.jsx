@@ -17,7 +17,7 @@ export default function BasicAccordion(props) {
               aria-controls="panel1a-content"
               id="panel1a-header"
             >
-              <Typography>Green Future Party <span className="material-symbols-outlined">nature_people</span></Typography>
+              <Typography>Green Future Party </Typography>
             </AccordionSummary>
             <AccordionDetails>
               <Typography>

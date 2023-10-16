@@ -2,10 +2,10 @@ import React, { useState } from 'react';
 import LoginAuth from './LoginAuth';
 import VotingComponent from './VotingComponent'; 
 import Tables from './Table';
-import Divider from '../../Divider';
+import Divider from '../Divider';
 import Scene from "../ThreeComponents/Scene";
 
-function Main() {
+function Main({ isVisible }) {
   const isLogging = true;
   const [currentPages, setCurrentPages] = useState("login");
   const [userName, setUserName] = useState("");
@@ -46,15 +46,15 @@ const showTable = (votingData) => {
     }
 
     return (
-        <div className="App">
+      <div className="App" style={{ display: isVisible ? 'block' : 'none' }}>
           {/* <Divider title={"Proof of Work"} /> */}
     
           <div className="container-fluid container-full-height">
             <div className="row">
-              <div className="col-md-3 left-column">
+              <div className="col-md-1 left-column">
                 {/* <Scene /> */}
               </div>
-              <div className="col-md-8 right-column">
+              <div className="col-md-11 right-column">
                 <>{pageContent}</>
               </div>
             </div>

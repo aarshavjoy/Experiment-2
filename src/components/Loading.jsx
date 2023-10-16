@@ -4,7 +4,14 @@ import { RevolvingDot } from "react-loader-spinner";
 
 const Loading = () => {
   return (
-    <Html color="#022027" position={[0, 1.5, 0]}>
+    <div
+      style={{
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "center",
+        height:'100vh'
+      }}
+    >
       <RevolvingDot
         radius="45"
         strokeWidth="3"
@@ -15,7 +22,7 @@ const Loading = () => {
         wrapperClass=""
         visible={true}
       />
-    </Html>
+    </div>
   );
 };
 

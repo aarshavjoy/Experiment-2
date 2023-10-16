@@ -1,10 +1,10 @@
 import React, { useState } from "react";
 import { generateRandomToken } from "../utilts";
-import Login from "./Common/Login";
-import Divider from "../Divider";
+import Login from "./common/Login";
+import Instruction from "./common/Instruction";
 import Token from "../components/PoW/Token";
-
 import Scene from "./ThreeComponents/Scene";
+import {useEffect} from "react";
 import { useDispatch, useSelector } from "react-redux";
 import {
   updateSelectedCardIndex,
@@ -23,9 +23,13 @@ const PowComponent = () => {
   console.log(userIntract);
   const isLoging = true;
   const [showTokenDialog, setShowTokenDialog] = useState(false);
-  const [showLogin, setShowLogin] = useState(false);
+  
+
   const [randomToken, setRandomToken] = useState("");
   const [currentPage, setCurrentPage] = useState("login");
+
+ 
+
 
   const generateRandomToken = () => {
     const min = 10000;
@@ -51,15 +55,27 @@ const PowComponent = () => {
   console.log(currentPage);
   switch (currentPage) {
     case "login":
-      pageContent = userIntract && task === 1 && (
-        <Login generateRandomToken={generateRandomToken} />
-      );
+      pageContent = userIntract && task === 1 ? 
+        <Login generateRandomToken={generateRandomToken} />:<Instruction text={
+          <>
+            Welcome, 
+            <br />
+            Please click on the voter to start the voting process.
+          </>
+        } />
+      ;
       break;
     case "token":
       pageContent = <Token token={randomToken} onClose={closeTokenDialog} />;
       break;
     case "voting machine":
-      pageContent = userIntract && task === 2 && <Voting />;
+      pageContent = userIntract && task === 2 ?  <Voting />:<Instruction text={ <>
+       Click on the voter to move forward!
+        <br />
+        <div className="text2">
+        To verify if the voting machine has been tampered or not , please click on the "Test" button.
+       </div>
+      </>} />;
       break;
 
     default:
@@ -67,7 +83,7 @@ const PowComponent = () => {
   }
   return (
     <div className="App">
-      <Divider title={"Proof of Work"} />
+      
 
       <div className="container-fluid container-full-height">
         <div className="row">

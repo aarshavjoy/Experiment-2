@@ -23,12 +23,14 @@ html, body {
 }
 .login-container {
   width: 250px;
+  margin-top: 30%;
   margin: 0 auto;
   padding: 20px;
   border: 1px solid #ccc;
   border-radius: 5px;
   border-color: #22eff1;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  align-items: center;
 }
 
 .form-group {
@@ -46,11 +48,12 @@ html, body {
 }
 .card-text{
   text-align: center;
-  font-weight: 800;
+  font-weight: 600;
 }
 
 .card-title{
   text-align: center;
+  font-size: x-large;
 }
 
 .cards{
@@ -64,15 +67,17 @@ html, body {
 }
 .btns{
    margin-left:35%;
-   background-color: #22eff1;
+   background-color: #27abc9;
 }
 .tokencard{
   width: 250px;
   margin-bottom: 15%;
   margin-left:30%;
-  background-color: black;
+  background-color: #022027;
   color: #fff;
   border-color: #22eff1;
+  border-radius:5%;
+
 }
 .list-group{
   color:black;
@@ -82,7 +87,7 @@ html, body {
   
   color: #fff;
   margin-top:10%;
-  margin-left:30%;
+  margin-left:10%;
   width: 250px;
   border: 2px solid #22eff1;
 }
@@ -137,7 +142,7 @@ margin-top:20px;
   width:10%;
 }
 .status {
-
+  opacity: 0;
   
   transition:  width 2s,opacity 0.8s ease-in, height 0.8s ease-in-out;
   color: white;
@@ -147,19 +152,50 @@ margin-top:20px;
   width:80%;
   height:80%;
   border-radius: 10px;
-  font-weight: 900;
-  font-size: x-large;
-
-
-
+  font-weight: 700;
+  font-size: large;
+}
+.alerts{
+margin-top:10%;
 }
 
 .status.show {
   opacity: 1;
   height: auto;
 }
+
 .btnss{
   margin-left:35%;
-   background-color: rgb(139, 129, 129);
+   background-color: rgb(29, 159, 192);
    color: #fff;
+}
+
+.material-icons{
+  text-align: center;
+  margin-top:10%;
+  font-size:70px;
+  color:red;
+ 
+}
+
+.text{
+  font-size: x-large;
+}
+.text1 {
+  opacity: 0;
+  transition: opacity 1s;
+}
+
+.visible {
+  opacity: 1;
+}
+.alerts{
+  background-color: #022027;
+  color:#fff;
+  border-radius: 5%;
+  border-color:#22eff1;
+}
+.card-text{
+  font-size: 22px
+
 }

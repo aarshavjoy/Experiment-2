@@ -1,52 +1,81 @@
-
-import BasicAccordion  from './PoS/Details'
-import Manifesto from './PoS/Manifesto'
 import React, { useState } from 'react';
-import Login from './PoS/Login'
-import Divider from '../Divider';
-
+import BasicAccordion from './PoS/Details';
+import Manifesto from './PoS/Manifesto';
+import Login from './PoS/Login';
+import Scene from "./ThreeComponents/Scene";
 import Voting from './PoS/voting';
+import Counting from './PoS/Counting';
+import AuthLogin from './PoS/autority-login';
+import CandidateVerification from './PoS/verify';
 
 const PosComponent = () => {
     const [isLoggedIn, setIsLoggedIn] = useState(false);
     const [showManifesto, setShowManifesto] = useState(false);
-    const [showVotingMachine, setShowVotinMachine] = useState(false);
+    const [showVotingMachine, setShowVotingMachine] = useState(false);
+    const [showCounting, setShowCounting] = useState(false);
+    const [showAuthorityLogin, setShowAuthorityLogin] = useState(false);
+    const [showCandidateVerification, setShowCandidateVerification] = useState(false);
+
     const handleSuccessfulLogin = () => {
         setIsLoggedIn(true);
+    };
+
+    const handleSuccessfulAuthorityLogin = () => {
+        setShowCandidateVerification(true);
+    };
+
+    const handleAuthorityLoginClick = () => {
+        setShowAuthorityLogin(true);
     };
 
     const handleNextClick = () => {
         setShowManifesto(true);
     };
+
     const handleSelectClick = () => {
-        setShowVotinMachine(true);
+        setShowVotingMachine(true);
     };
+
+    const handleCounting = () => {
+        setShowCounting(true);
+    };
+
     return (
-    <>
-      <Divider title={"Proof of Stake"}  />
-     <div className='heading'>
-                <h2>Power of Stake</h2>
+        <>
+            <div className='heading'>
+                {/* ... */}
             </div>
             <div className="container-fluid container-full-height">
                 <div className="row">
                     <div className="col-md-9 left-column">
-                        <h2>Left Column</h2>
+                        <Scene />
                     </div>
                     <div className="col-md-3 right-column">
-                    {
-        isLoggedIn 
-        ? (
-            showManifesto 
-            ? (showVotingMachine ? <Voting/> : <Manifesto onSelectClick={handleSelectClick} />)
-            : <BasicAccordion onNextClick={handleNextClick} />
-          )
-        : <Login onSuccessfulLogin={handleSuccessfulLogin} />
-    }
-
-                        <Voting/>
+                        {
+                            showCandidateVerification 
+                            ? <CandidateVerification />
+                            : (
+                                showAuthorityLogin 
+                                ? <AuthLogin onSuccessfulAuthorityLogin={handleSuccessfulAuthorityLogin} />
+                                : (
+                                    isLoggedIn 
+                                    ? (
+                                        showManifesto 
+                                        ? (
+                                            showVotingMachine 
+                                            ? (showCounting ? <Counting /> : <Voting onCounting={handleCounting} />)
+                                            : <Manifesto onSelectClick={handleSelectClick} />
+                                        )
+                                        : <BasicAccordion onNextClick={handleNextClick} />
+                                    )
+                                    : <Login onSuccessfulLogin={handleSuccessfulLogin} onAuthorityLoginClick={handleAuthorityLoginClick} />
+                                )
+                            )
+                        }
                     </div>
                 </div>
-            </div></>
+            </div>
+        </>
     );
 }
 

@@ -92,7 +92,7 @@ const Scene = () => {
       }}
       camera={{ fov: 15, position: [-50, 20, 50] }}
     >
-      <Suspense fallback={<Loading />}>
+      {/* <Suspense fallback={<Loading />}> */}
         <ambientLight />
         <pointLight position={[10, 10, 10]} />
         <Physics>
@@ -163,7 +163,7 @@ const Scene = () => {
           <OrbitControls />
           <color args={["#022027"]} attach="background" />
         </Physics>
-      </Suspense>
+      {/* </Suspense> */}
     </Canvas>
   );
 };
