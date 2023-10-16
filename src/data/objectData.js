@@ -9,6 +9,7 @@ export const objectData = [
         position: [-1, 6, -9.6],
       },
     ],
+    divider: [{ id: 1, position: [1.6, 0.1, 0] }],
   },
   {
     id: 2,
@@ -20,6 +21,7 @@ export const objectData = [
         position: [4, 6, -9.6],
       },
     ],
+    divider: [{ id: 1, position: [5.9, 0.1, 0] }],
   },
   {
     id: 3,
@@ -31,6 +33,7 @@ export const objectData = [
         position: [8.5, 6, -9.6],
       },
     ],
+    divider: [{ id: 1, position: [10.4, 0.1, 0] }],
   },
   {
     id: 4,
@@ -42,5 +45,6 @@ export const objectData = [
         position: [13, 6, -9.6],
       },
     ],
+    divider: [],
   },
 ];

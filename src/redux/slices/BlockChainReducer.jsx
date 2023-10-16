@@ -1,6 +1,11 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-const initialState = { selectedCardIndex: [], userIntract: false, task: 1 };
+const initialState = {
+  selectedCardIndex: [],
+  userIntract: false,
+  task: 1,
+  ifClickLeft: false,
+};
 
 const BlockChainReducer = createSlice({
   name: "BlockChainDetails",
@@ -20,6 +25,9 @@ const BlockChainReducer = createSlice({
       state.task = 1;
       state.userIntract = false;
     },
+    onClickLeft: (state, action) => {
+      state.ifClickLeft = action.payload;
+    },
   },
 });
 
@@ -27,6 +35,7 @@ export const {
   updateSelectedCardIndex,
   updateUserInteract,
   updateTask,
+  onClickLeft,
   clearState,
 } = BlockChainReducer.actions;
 export default BlockChainReducer.reducer;

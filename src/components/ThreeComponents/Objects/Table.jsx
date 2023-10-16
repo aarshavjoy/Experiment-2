@@ -24,6 +24,7 @@ export default function Table(props) {
         rotation={[0, 0, 0]}
         castShadow
       />
+
       <group name="Scene">
         <group
           name="Sketchfab_model"

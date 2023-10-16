@@ -1,7 +1,7 @@
 import React from "react";
 import "./voting.css";
 
-import VoterMachine from "../common/VotingMachine";
+import VoterMachine from "../Common/VotingMachine";
 const Voting = () => {
   // React.useEffect(()=>{
   //     const test=document.getElementsByClassName('voting_machine')

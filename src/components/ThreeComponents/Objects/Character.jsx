@@ -17,21 +17,10 @@ const Character = (props) => {
   const { nodes, materials, animations } = useGLTF(
     "../../../textures/character2.glb"
   );
-  const { userIntract } = useSelector((state) => state.BlockChainReducer);
+  const { userIntract, ifClickLeft } = useSelector(
+    (state) => state.BlockChainReducer
+  );
 
-  const [ref, api] = useBox(() => ({
-    ...props,
-    type: "Kinematic",
-    name: "player",
-    args: [2.5, 2.5, 2.5],
-    collisionFilterGroup: 1,
-    collisionFilterMask: 4,
-    onCollide: (e) => {
-      console.log("over");
-    },
-  }));
-  const { state, setState } = props;
-  const { isLeft } = state;
   const { actions, names } = useAnimations(animations, group);
 
   React.useEffect(() => {
@@ -47,18 +36,16 @@ const Character = (props) => {
 
   useFrame(() => {
     const speed = 0.02;
-    const Rspeed = 0.01;
     const newPosition = [...position];
-    const newRotation = [...rotation];
     if (group.current) {
       group.current.position.set(...position);
       group.current.rotation.set(...rotation);
     }
 
-    if (!isLeft) {
+    if (!ifClickLeft) {
       actions[names[1]].reset().fadeIn(0.5).play();
     }
-    if (isLeft) {
+    if (ifClickLeft) {
       newPosition[0] += speed;
 
       setPosition(newPosition);
@@ -66,7 +53,7 @@ const Character = (props) => {
     }
   });
   return (
-    <group ref={ref}>
+    <group>
       <group ref={group} {...props} dispose={null}>
         <group name="Scene">
           <group
