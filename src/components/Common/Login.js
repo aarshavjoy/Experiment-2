@@ -1,7 +1,7 @@
 
 import React, { useState } from 'react';
 
-function Login({ generateRandomToken}) {
+function Login({ generateRandomToken,setCurrentPage,onButtonClick}) {
   const [name, setName] = useState('');
   const [voterid, setVoterid] = useState('');
   const [errorMessage, setErrorMessage] = useState('');
@@ -16,23 +16,30 @@ function Login({ generateRandomToken}) {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-
+ 
     const pattern = /^[A-Za-z]{4}\d{6}$/;
 
     if (pattern.test(voterid)) {
       
       generateRandomToken();
       setErrorMessage('');
+    setCurrentPage("token");
+    onButtonClick({name});
+      
+      
     } else {
      
       setErrorMessage('Invalid Voter ID. ID Should Start With 4 Letters Followed With 6 Numbers.');
+    
     }
+
   };
 
   return (
     <div className="login-container">
       <form onSubmit={handleSubmit}>
         <div className="form-group">
+          <h3 className="logins">Voter Verification</h3>
           <label>Name:</label>
           <input
             type="text"

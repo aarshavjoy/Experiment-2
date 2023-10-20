@@ -22,12 +22,12 @@ html, body {
   height: 100%;
 }
 .login-container {
-  width: 250px;
+  width: 300px;
   margin-top: 30%;
   margin: 0 auto;
   padding: 20px;
   border: 1px solid #ccc;
-  border-radius: 5px;
+  border-radius: 10px;
   border-color: #22eff1;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   align-items: center;
@@ -204,6 +204,83 @@ margin-top:10%;
   border-color:#22eff1;
 }
 .card-text{
-  font-size: 22px
+  font-size: 15px;
+  color: #fff;
 
+
+}
+.tokens{
+  color: #fff;
+}
+.logins{
+  margin-left:10%;
+}
+.para{
+  color:#fff;
+}
+.tampcard{
+  width:70%;
+  height:60%;
+  margin-top:5%;
+ border-radius: 10px;
+  font-size: medium;
+}
+.tampbtn{
+  margin-left:25%;
+}
+.timer{
+  color:#fff
+}
+.report-button{
+  margin-left :65%;
+  background-color: red;
+  margin-top:-5%;
+  height:20%;
+
+}
+.reportcard{
+  width:70%;
+ 
+}
+.form-check-label{
+  font-size: large;
+}
+.form-check-input{
+  height:15%;
+}
+.checkbox-button{
+  margin-top:3%;
+  border: 2px;
+  border-color: #22eff1;
+  background-color: rgb(29, 159, 192);
+  color: #fff;
+  margin-left:20%;
+  margin-bottom:10%;
+}
+.checkbox{
+  background-color: #022027;
+  color:#fff;
+  border-color: #22eff1;
+  width:80%;
+  height:60%;
+  border-radius: 6px;
+  margin-left:20%;
+  
+
+}
+.form-check{
+  margin-left:10%;
+}
+.card-tittle{
+  text-align:center;
+  
+}
+.reportbtn{
+  background-color: #022027;
+  color:#fff;
+}
+.alerthead{
+  text-align:center;
+  font-size: x-large;
+  margin-top:-10%;
 }

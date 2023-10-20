@@ -1,96 +1,133 @@
-import React, { useState } from "react";
-import { generateRandomToken } from "../utilts";
-import Login from "./Common/Login";
-import Instruction from "./Common/Instruction";
-import Token from "../components/PoW/Token";
+import React from "react";
+import Login from "./common/Login";
 import Scene from "./ThreeComponents/Scene";
-import { useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import {
-  updateSelectedCardIndex,
-  updateTask,
-  updateUserInteract,
-} from "../redux/slices/BlockChainReducer";
-import Voting from "./PoS/voting";
-import InstructionMessage from "./Instruction";
+import Token from "./PoW/Token";
+import Timer from "./PoW/Timer";
+import VotingComponent from "./PoW/VotingComponent";
+import { useState } from "react";
+import Report from "./PoW/Report";
+import LoginAuth from "./PoW/LoginAuth";
+import Notification from "./PoW/Notification";
+import Tables from "./PoW/Table";
+import CheckboxCard from "./PoW/CheckBox";
+import Alert from "./PoW/Alert";
 
-const PowComponent = () => {
-  const { userIntract, task, selectedCardIndex } = useSelector(
-    (state) => state.BlockChainReducer
-  );
-
-  const dispatch = useDispatch();
-
-  console.log(userIntract);
-  const isLoging = true;
-  const [showTokenDialog, setShowTokenDialog] = useState(false);
-
-  const [randomToken, setRandomToken] = useState("");
+export default function PowComponent() {
   const [currentPage, setCurrentPage] = useState("login");
+  const [token, setToken] = useState("");
+  const [showTimer, setShowTimer] = useState(false);
+  const [showVotingComponent, setShowVotingComponent] = useState(false);
+  const [showReport, setShowReport] = useState(false);
+  const [showNotification, setShowNotification] = useState(true);
+  const [votingData, setVotingData] = useState(null);
+  const [userName, setUserName] = useState("");
+ 
 
-  const generateRandomToken = () => {
-    const min = 10000;
-    const max = 99999;
-    const token = Math.floor(Math.random() * (max - min + 1)) + min;
-    setRandomToken(token);
-    setShowTokenDialog(true);
+
+
+  
+  const showName = (userName) => {
+    setUserName(userName.name);
+    console.log(userName);
+  };
+  const handleLoginClose = () => {
     setCurrentPage("token");
+    setShowTimer(true);
+    
   };
-  console.log(userIntract, task, "hello");
-  const closeTokenDialog = () => {
-    const nextIndex =
-      selectedCardIndex.length > 0
-        ? (selectedCardIndex[selectedCardIndex.length - 1] + 1) % 4
-        : 0;
-    setShowTokenDialog(false);
-    setCurrentPage("voting machine");
-    dispatch(updateSelectedCardIndex([...selectedCardIndex, nextIndex]));
-    dispatch(updateUserInteract(false));
-    dispatch(updateTask(2));
+  const generateRandomToken = () => {
+    setToken("");
   };
-  let pageContent = null;
-  console.log(currentPage);
-  switch (currentPage) {
-    case "login":
-      pageContent =
-        userIntract && task === 1 ? (
-          <Login generateRandomToken={generateRandomToken} />
-        ) : (
-          <InstructionMessage text="Welcome, Please click on the voter to start the voting process." />
-        );
-      break;
-    case "token":
-      pageContent = <Token token={randomToken} onClose={closeTokenDialog} />;
-      break;
-    case "voting machine":
-      pageContent =
-        userIntract && task === 2 ? (
-          <Voting />
-        ) : task === 3 ? (
-          <Voting />
-        ) : (
-          <InstructionMessage
-            text={`Click on the voter to move forward!   To verify if the voting machine has been tampered or not ,
-          please click on the "Test" button.`}
-          />
-        );
-      break;
 
-    default:
-      pageContent = null;
-  }
-  return (
-    <div className="App">
-      <div className="container-fluid container-full-height">
-        <div className="row">
-          <div className="col-md-9 left-column">
-            <Scene />
-          </div>
-          <div className="col-md-3 right-column">{pageContent}</div>
-        </div>
-      </div>
-    </div>
-  );
+  const handleTokenClose = () => {
+    setCurrentPage("votingComponent");
+  };
+  const handleTable = () => {
+    setCurrentPage("tables");
+  };
+  const handleReport=() => {
+    setCurrentPage("report");
+  };
+ 
+const handleNotification=() => {
+  setCurrentPage("notification");
+};
+const handleLoginauth=() => {
+  setCurrentPage("loginAuth");
+};
+const handleCheckbox=() => {
+  setCurrentPage("checkbox");
+};
+const handleAlert=() => {
+  setCurrentPage("alert");
+};
+const handleVote=() => {
+  setCurrentPage("vote");
+};
+const showTables = (votingData) => {
+  setVotingData(votingData);
+  setCurrentPage("tables");
+  console.log(votingData)
 };
 
-export default PowComponent;
+
+  return (
+    <>
+      <div className="App">
+        <div className="container-fluid container-full-height">
+          <div className="row">
+            <div className="col-md-9 left-column">
+              <Scene />
+            </div>
+            <div className="col-md-3 right-column">
+              
+              {currentPage === "login" ? (
+                <Login
+                  generateRandomToken={() => {}}
+                  setCurrentPage={handleLoginClose}
+                  onButtonClick={showName}
+                />
+              ) : null}
+              {currentPage === "token" ? <Timer initialTime={300} /> : null}
+              {currentPage === "token" ? (
+                <Token onClose={handleTokenClose} />
+              ) : null}
+
+               {currentPage === "votingComponent" ? (
+                <VotingComponent onClick={handleReport}  onChange={handleTable} showTables={showTables} userName={userName} />
+              ) : null}
+
+              {currentPage === "tables" ? (
+                <Tables  userName={votingData.userName}
+                time={votingData.time}
+                status={votingData.status} />
+              ) : null}
+
+              {currentPage === "report" ? (
+                <Report onClick={handleNotification} />
+              ) : null}
+             {currentPage === "notification" ? (
+                <Notification  onClick={handleLoginauth}/>
+              ) : null}
+             {currentPage === "loginAuth" ? (
+                <LoginAuth  onClick={handleCheckbox}/>
+              ) : null}
+             {currentPage === "checkbox" ? (
+                <CheckboxCard onClick={handleAlert} />
+              ) : null}
+               {currentPage === "alert" ? (
+                <Alert  onClick={handleVote}/>
+              ) : null}
+                {currentPage === "vote" ? (
+                <VotingComponent onChange={handleTable} showTables={showTables}  userName={userName} />
+              ) : null}
+            
+              
+              
+            </div>
+          </div>
+        </div>
+      </div>
+    </>
+  );
+}

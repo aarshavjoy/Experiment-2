@@ -1,35 +1,32 @@
 
-import Main from "../PoW/Main";
 import React, { useState } from 'react';
+import VotingComponent from './VotingComponent';
 
 
 
-export default function Alert() {
-    const [showMain, setShowMain] = useState(false);
-    const [showAlert, setShowAlert] = useState(true);
+export default function Alert({onClick}) {
+    const [showAlert, setShowAlert] = useState(false);
 
-    const toggleMain = () => {
-        setShowMain(!showMain);
-        setShowAlert(false);
-      };
+    
 
   return (
     <div className="alerts">
-        {showAlert && (
-      <div className="card alerts" style={{ width: '18rem' }}>
-      <i className="material-icons">warning</i>
+        
+      <div className="card alerts" style={{ width: '20rem' }}>
+      <i className="fa-solid fa-square-check" style={{ fontSize: '5em', textAlign: 'center', display: 'block', margin: '5% auto' }}></i>
          <div className="card-body">
-          <h5 className="card-title">Error</h5>
+          <h5 className="alerthead">Success!</h5>
           <p className="card-text">
-          Please login to the official portal immediately due to system tampering.
+         Secruity check completed successfully, voting machine is secure to use , continue with your voting process.
           </p>
-          <button className="btn btnss" onClick={toggleMain}>
-          Login
+          <button  onClick={onClick}  className="btn btnss" >
+          Continue
           </button>
+          {showAlert && <VotingComponent />}
         </div>
       </div>
-         )}
-       {showMain && <Main isVisible={showMain} />} 
+        
+       
     </div>
   );
 }
