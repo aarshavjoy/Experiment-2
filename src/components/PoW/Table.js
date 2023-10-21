@@ -1,6 +1,32 @@
-import React from 'react';
+import React from "react";
+import {
+  updateSelectedCardIndex,
+  updateTask,
+  updateUserInteract,
+} from "../../redux/slices/BlockChainReducer";
+import { useDispatch, useSelector } from "react-redux";
 
 function Tables({ userName, time, status }) {
+  const { userIntract, task, selectedCardIndex } = useSelector(
+    (state) => state.BlockChainReducer
+  );
+  const dispatch = useDispatch();
+  const nextIndex =
+    selectedCardIndex.length > 0
+      ? (selectedCardIndex[selectedCardIndex.length - 1] + 1) % 4
+      : 0;
+
+  // React.useEffect(() => {
+  //   const showGreenLight = setTimeout(() => {
+  //     dispatch(updateSelectedCardIndex([...selectedCardIndex, nextIndex]));
+  //     dispatch(updateUserInteract(false));
+  //     dispatch(updateTask(4));
+  //   }, 2000);
+
+  //   return () => {
+  //     clearTimeout(showGreenLight);
+  //   };
+  // }, []);
   return (
     <table className="table">
       <thead>
