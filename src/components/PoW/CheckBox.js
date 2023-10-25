@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import VotingComponent from './VotingComponent';
 import Alert from './Alert';
 import { useEffect } from 'react';
+import Messages from '../Message';
 
 function CheckboxCard({onClick}) {
   const [isGreenLightChecked, setGreenLightChecked] = useState(false);
@@ -32,7 +33,8 @@ function CheckboxCard({onClick}) {
     setBeepSoundChecked(!isBeepSoundChecked);
   };
 
-  return (
+  return (<>
+   <Messages text={"To trigger the replacement of a voting machine, all three checkboxes must be ticked,Just as in PoW where miners must solve complex computational puzzles to secure the blockchain, here, our conditions must be met to secure the voting process."} />
     <div className="card checkbox">
       <div className="card-header">
      
@@ -77,7 +79,7 @@ function CheckboxCard({onClick}) {
           {showalert && <Alert />}
         </div>
       </div>
-    
+      </>
   );
 }
 

@@ -3,6 +3,7 @@ import Select from 'react-select';
 import Notification from './Notification';
 import { useState } from 'react';
 import LoginAuth from './LoginAuth';
+import Messages from '../Message';
 
 export default function Report({onClick}) {
   const options = [
@@ -18,7 +19,8 @@ export default function Report({onClick}) {
 
   
   
-  return (
+  return (<>
+  <Messages text={"select from the option to report the issue so that the voting machine can be replaced "}/>
     <div className="container">
       <div className="mt-5 mx-auto ">
         <div className="card reportcard ">
@@ -32,5 +34,6 @@ export default function Report({onClick}) {
         </div>
       </div>
     </div>
+    </>
   );
 }

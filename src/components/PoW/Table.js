@@ -5,6 +5,7 @@ import {
   updateUserInteract,
 } from "../../redux/slices/BlockChainReducer";
 import { useDispatch, useSelector } from "react-redux";
+import Messages from "../Message";
 
 function Tables({ userName, time, status }) {
   const { userIntract, task, selectedCardIndex } = useSelector(
@@ -27,7 +28,8 @@ function Tables({ userName, time, status }) {
   //     clearTimeout(showGreenLight);
   //   };
   // }, []);
-  return (
+  return (<>
+  <Messages text={"After you've cast your vote using the secure voting machine, a table will appear on the screen.The purpose of this table is to ensure public verification, similar to the transparency offered by blockchain technology, where all transactions are visible to participants."}/>
     <table className="table">
       <thead>
         <tr>
@@ -55,6 +57,7 @@ function Tables({ userName, time, status }) {
         </tr>
       </tbody>
     </table>
+    </>
   );
 }
 

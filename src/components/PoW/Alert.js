@@ -1,6 +1,7 @@
 
 import React, { useState } from 'react';
 import VotingComponent from './VotingComponent';
+import Messages from '../Message';
 
 
 
@@ -9,7 +10,8 @@ export default function Alert({onClick}) {
 
     
 
-  return (
+  return (<>
+   <Messages text={"By clicking the 'Continuing' button, allow users to proceed with the newly replaced, secure voting machine. just as in PoW, where successful verification allows transactions to be included in the blockchain."} />
     <div className="alerts">
         
       <div className="card alerts" style={{ width: '20rem' }}>
@@ -25,8 +27,7 @@ export default function Alert({onClick}) {
           {showAlert && <VotingComponent />}
         </div>
       </div>
-        
-       
-    </div>
+      </div>
+      </>
   );
 }

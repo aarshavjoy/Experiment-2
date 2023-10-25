@@ -32,11 +32,14 @@ export default function PowComponent() {
   const [showNotification, setShowNotification] = useState(true);
   const [votingData, setVotingData] = useState(null);
   const [userName, setUserName] = useState("");
+  const [currentColor, setCurrentColor] = useState(getRandomColor());
   const nextIndex =
     selectedCardIndex.length > 0
       ? (selectedCardIndex[selectedCardIndex.length - 1] + 1) % 4
       : 0;
-
+  function getRandomColor() {
+    return Math.random() < 0.5 ? 'green' : 'red';
+  }
   const showName = (userName) => {
     dispatch(updateSelectedCardIndex([...selectedCardIndex, nextIndex]));
     dispatch(updateUserInteract(false));
@@ -80,6 +83,7 @@ export default function PowComponent() {
   };
   const handleVote = () => {
     setCurrentPage("vote");
+    setCurrentColor('green');
   };
   const showTables = (votingData) => {
     setVotingData(votingData);
@@ -98,7 +102,7 @@ export default function PowComponent() {
             <div className="col-md-3 right-column">
               {currentPage === "login" && userIntract && task === 1 ? (
                 <Login
-                  generateRandomToken={() => {}}
+                  generateRandomToken={() => { }}
                   setCurrentPage={handleLoginClose}
                   onButtonClick={showName}
                 />
@@ -111,18 +115,18 @@ export default function PowComponent() {
                 </>
               ) : null}
 
-              {currentPage === "votingComponent" &&
-              userIntract &&
-              task === 3 ? (
-                <VotingComponent
-                  onClick={handleReport}
-                  onChange={handleTable}
-                  showTables={showTables}
-                  userName={userName}
-                />
-              ) : null}
+              {currentPage === "votingComponent"
+                ? (
+                  <VotingComponent
+                    onClick={handleReport}
+                    onChange={handleTable}
+                    showTables={showTables}
+                    userName={userName}
+                    currentColor={currentColor}
+                  />
+                ) : null}
 
-              {currentPage === "tables" && userIntract && task === 4 ? (
+              {currentPage === "tables" ? (
                 <Tables
                   userName={votingData.userName}
                   time={votingData.time}
@@ -148,20 +152,21 @@ export default function PowComponent() {
                   onChange={handleTable}
                   showTables={showTables}
                   userName={userName}
+                  currentColor={currentColor} 
                 />
               ) : null}
               {!userIntract && task === 1 && (
-                <InstructionMessage text={"task1"} />
+                <InstructionMessage text={"In this simulation, we will explore the concept of Proof of Work (PoW) through an election scenario.During this simulation, think of the election as our blockchain. Voters, like blockchain participants, will need to provide proof of their eligibility, just as PoW ensures the legitimacy of transactions in the blockchain. click the below button to start the process."} />
               )}
               {!userIntract && task === 2 && (
-                <InstructionMessage text={"task2"} />
+                <InstructionMessage text={"We've seen  that PoW prevents double-spending in cryptocurrencies, and similarly, in elections, it's vital to prevent individuals from casting multiple votes.To prevent double voting, we've created a special 'token' for each voter, think of the 'token' as a cryptographic key, and the 'timer' as the time it takes for the PoW to complete."} />
               )}
-              {!userIntract && task === 3 && (
-                <InstructionMessage text={"task3"} />
-              )}
-              {!userIntract && task === 4 && (
+              {/* {!userIntract && task === 3 && (
+                <InstructionMessage text={"Each voting machine has an indicator light. A 'green light' indicates that the machine is tamper-free, and the voter can cast their vote without concern.However, if the light turns 'red,' it means the machine might have been tampered with. Just as in PoW, where a node is suspected of being incorrect and reported, in this case, a red light indicates that the voting machine should be reported to the authorities for replacement"} />
+              )} */}
+              {/* {!userIntract && task === 4 && (
                 <InstructionMessage text={"task4"} />
-              )}
+              )} */}
             </div>
           </div>
         </div>

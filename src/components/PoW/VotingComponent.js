@@ -10,6 +10,7 @@ import {
   updateUserInteract,
 } from "../../redux/slices/BlockChainReducer";
 import { useDispatch, useSelector } from "react-redux";
+import Messages from "../Message";
 
 const VotingComponent = ({
   onClick,
@@ -18,6 +19,7 @@ const VotingComponent = ({
   status,
   userName,
   showTables,
+  currentColor 
 }) => {
   const { userIntract, task, selectedCardIndex } = useSelector(
     (state) => state.BlockChainReducer
@@ -25,7 +27,7 @@ const VotingComponent = ({
   const dispatch = useDispatch();
 
   const audio = new Audio(sound);
-  const [currentColor, setCurrentColor] = useState(getRandomColor());
+  // const [currentColor, setCurrentColor] = useState(getRandomColor());
   const [showTable, setShowTable] = useState(false);
   const [voteTime, setVoteTime] = useState(null);
   const [voteStatus, setVoteStatus] = useState(null);
@@ -35,9 +37,9 @@ const VotingComponent = ({
     selectedCardIndex.length > 0
       ? (selectedCardIndex[selectedCardIndex.length - 1] + 1) % 4
       : 0;
-  function getRandomColor() {
-    return Math.random() < 0.5 ? "green" : "red";
-  }
+  // function getRandomColor() {
+  //   return Math.random() < 0.5 ? "green" : "red";
+  // }
   const onHandleVote = () => {
     if (currentColor === "green") {
       const time = new Date().toLocaleTimeString();
@@ -53,7 +55,9 @@ const VotingComponent = ({
 
   return (
     <>
+     <Messages text={"Each voting machine has an indicator light. A 'green light' indicates that the machine is tamper-free, and the voter can cast their vote without concern.However, if the light turns 'red,' it means the machine might have been tampered with. Just as in PoW, where a node is suspected of being incorrect and reported, in this case, a red light indicates that the voting machine should be reported to the authorities for replacement"}/>
       <>
+
         <svg
           width="400"
           height="591"

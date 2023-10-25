@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import CheckboxCard from './CheckBox';
+import Messages from '../Message';
 
 function LoginAuth({ onClick }) {
   const [name, setName] = useState('');
@@ -34,7 +35,8 @@ function LoginAuth({ onClick }) {
     }
   };
 
-  return (
+  return (<>
+  <Messages text={"In our simulation, we've introduced an 'Authority Panel' to manage and replace tampered voting machines, ensuring the integrity of the electoral process. similar to how nodes and miners in a blockchain network work to verify transactions."}/>
     <div className="login-container">
       <form onSubmit={handleSubmit}>
         <div className="form-group">
@@ -68,6 +70,7 @@ function LoginAuth({ onClick }) {
       {errorMessage && <div className="alert alert-danger mt-3">{errorMessage}</div>}
       
     </div>
+    </>
   );
 }
 
