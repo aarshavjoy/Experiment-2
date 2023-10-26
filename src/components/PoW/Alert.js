@@ -14,7 +14,7 @@ export default function Alert({onClick}) {
    <Messages text={"By clicking the 'Continuing' button, allow users to proceed with the newly replaced, secure voting machine. just as in PoW, where successful verification allows transactions to be included in the blockchain."} />
     <div className="alerts">
         
-      <div className="card alerts" style={{ width: '20rem' }}>
+      <div className="card alerts" style={{ width: '20rem' ,marginLeft: 30}}>
       <i className="fa-solid fa-square-check" style={{ fontSize: '5em', textAlign: 'center', display: 'block', margin: '5% auto' }}></i>
          <div className="card-body">
           <h5 className="alerthead">Success!</h5>

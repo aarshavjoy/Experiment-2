@@ -1,5 +1,5 @@
 import React from "react";
-import Login from "../components/Common/Login";
+import Login from "../components/common/Login"
 import Scene from "./ThreeComponents/Scene";
 import Token from "./PoW/Token";
 import Timer from "./PoW/Timer";
@@ -90,7 +90,7 @@ export default function PowComponent() {
     setCurrentPage("tables");
     console.log(votingData);
   };
-
+console.log(task,userIntract,'check')
   return (
     <>
       <div className="App">
@@ -115,8 +115,9 @@ export default function PowComponent() {
                 </>
               ) : null}
 
-              {currentPage === "votingComponent"
-                ? (
+              {currentPage === "votingComponent"&& userIntract && task === 3 ?
+                 (<>
+                  <Timer initialTime={300} />
                   <VotingComponent
                     onClick={handleReport}
                     onChange={handleTable}
@@ -124,14 +125,18 @@ export default function PowComponent() {
                     userName={userName}
                     currentColor={currentColor}
                   />
+                  </>
                 ) : null}
 
-              {currentPage === "tables" ? (
+              {currentPage === "tables" && userIntract && task === 4 ? (
+                <>
+                <Timer initialTime={300} />
                 <Tables
                   userName={votingData.userName}
                   time={votingData.time}
                   status={votingData.status}
                 />
+                </>
               ) : null}
 
               {currentPage === "report" ? (
@@ -161,12 +166,12 @@ export default function PowComponent() {
               {!userIntract && task === 2 && (
                 <InstructionMessage text={"We've seen  that PoW prevents double-spending in cryptocurrencies, and similarly, in elections, it's vital to prevent individuals from casting multiple votes.To prevent double voting, we've created a special 'token' for each voter, think of the 'token' as a cryptographic key, and the 'timer' as the time it takes for the PoW to complete."} />
               )}
-              {/* {!userIntract && task === 3 && (
-                <InstructionMessage text={"Each voting machine has an indicator light. A 'green light' indicates that the machine is tamper-free, and the voter can cast their vote without concern.However, if the light turns 'red,' it means the machine might have been tampered with. Just as in PoW, where a node is suspected of being incorrect and reported, in this case, a red light indicates that the voting machine should be reported to the authorities for replacement"} />
-              )} */}
-              {/* {!userIntract && task === 4 && (
-                <InstructionMessage text={"task4"} />
-              )} */}
+              {!userIntract && task === 3 && (
+                <InstructionMessage text={"Each voting machine has an indicator light. A 'green light' indicates that the machine is tamper-free, and the voter can cast their vote without concern.However, if the light turns 'red,' it means the machine might have been tampered with. Just as in PoW, where a node is suspected of being incorrect and reported"} />
+              )}
+              {!userIntract && task === 4 && (
+                <InstructionMessage text={"After you've cast your vote using the secure voting machine, a table will appear on the screen.The purpose of this table is to ensure public verification, similar to the transparency offered by blockchain technology, where the transactions are visible to participants."} />
+              )}
             </div>
           </div>
         </div>

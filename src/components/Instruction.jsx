@@ -4,12 +4,15 @@ import { Button, Typography } from "@mui/material";
 import ChevronRightIcon from "@mui/icons-material/ChevronRight";
 import { useDispatch, useSelector } from "react-redux";
 import { onClickLeft } from "../redux/slices/BlockChainReducer";
+
 const InstructionMessage = ({ text }) => {
   const [showBtn, setShowBtn] = useState(false);
+  const [starts, setStarts] = useState(true); 
   const dispatch = useDispatch();
-  const { ifClickLeft, userIntract } = useSelector(
+  const { ifClickLeft, userIntract,task } = useSelector(
     (state) => state.BlockChainReducer
   );
+
   const onHandleClick = () => {
     if (!userIntract) {
       dispatch(onClickLeft(!ifClickLeft));
@@ -17,15 +20,20 @@ const InstructionMessage = ({ text }) => {
       alert("Complete the task ");
     }
   };
+
   useEffect(() => {
     const showBtnTimer = setTimeout(() => {
       setShowBtn(true);
-    }, 8000);
+    }, 2000);
+
+    if (starts) {
+      setStarts(false); 
+    }
 
     return () => {
       clearTimeout(showBtnTimer);
     };
-  }, []);
+  }, [starts]);
 
   return (
     <div style={{ color: "white" }}>
@@ -36,13 +44,11 @@ const InstructionMessage = ({ text }) => {
       >
         Instructions
       </h5>
-      <div style={{ marginTop: "41px" }}>
-        <Typist cursor={{ blink: true }} avgTypingDelay={50}>
-          {text}
-        </Typist>
+      <div style={{ marginTop: "25px" }}>
+        <div>{text}</div>
         {showBtn && (
           <Button
-            sx={{ marginTop: 5, marginLeft: -1 }}
+            sx={{ marginTop: 3, marginLeft: -1 }}
             onClick={onHandleClick}
             style={{}}
           >
@@ -54,7 +60,7 @@ const InstructionMessage = ({ text }) => {
                 alignItems: "center",
               }}
             >
-              Move Left
+              {task===1 ? "Start" : "Continue"} 
               <ChevronRightIcon />
             </Typography>
           </Button>

@@ -29,7 +29,7 @@ function Tables({ userName, time, status }) {
   //   };
   // }, []);
   return (<>
-  <Messages text={"After you've cast your vote using the secure voting machine, a table will appear on the screen.The purpose of this table is to ensure public verification, similar to the transparency offered by blockchain technology, where all transactions are visible to participants."}/>
+  {/* <Messages text={"After you've cast your vote using the secure voting machine, a table will appear on the screen.The purpose of this table is to ensure public verification, similar to the transparency offered by blockchain technology, where all transactions are visible to participants."}/> */}
     <table className="table">
       <thead>
         <tr>

@@ -23,7 +23,8 @@ html, body {
 }
 .login-container {
   width: 300px;
-  margin-top: 30%;
+  height:300px;
+  margin-top:30%;
   margin: 0 auto;
   padding: 20px;
   border: 1px solid #ccc;
@@ -264,7 +265,7 @@ margin-top:10%;
   width:80%;
   height:60%;
   border-radius: 6px;
-  margin-left:20%;
+  margin-left:10%;
   
 
 }

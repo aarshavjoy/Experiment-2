@@ -3,6 +3,7 @@ import sound from "../../Assets/Audios/beep.mp3";
 import { useState } from "react";
 import Tables from "./Table";
 import Report from "./Report";
+import Timer from"./Timer";
 import AlertReport from "./AlertReport";
 import {
   updateSelectedCardIndex,
@@ -19,7 +20,7 @@ const VotingComponent = ({
   status,
   userName,
   showTables,
-  currentColor 
+  currentColor ,onClose
 }) => {
   const { userIntract, task, selectedCardIndex } = useSelector(
     (state) => state.BlockChainReducer
@@ -46,21 +47,22 @@ const VotingComponent = ({
       const status = true;
       dispatch(updateSelectedCardIndex([...selectedCardIndex, nextIndex]));
       dispatch(updateUserInteract(false));
-      dispatch(updateTask(3));
+      dispatch(updateTask(4));
       showTables({ userName, time, status });
     } else {
       setShowAlertReport(true);
     }
   };
-
+const changeText =currentColor === "green"? " green light indicates that the machine is tamper-free, and the voter can cast their vote without concern":"The light turns 'red,' it means the machine might have been tampered with. Just as in PoW, where a node is suspected of being incorrect and reported, in this case, a red light indicates that the voting machine should be reported to the authorities for replacement"
   return (
     <>
-     <Messages text={"Each voting machine has an indicator light. A 'green light' indicates that the machine is tamper-free, and the voter can cast their vote without concern.However, if the light turns 'red,' it means the machine might have been tampered with. Just as in PoW, where a node is suspected of being incorrect and reported, in this case, a red light indicates that the voting machine should be reported to the authorities for replacement"}/>
+     <Messages text={changeText}/>
       <>
 
         <svg
-          width="400"
-          height="591"
+        
+          width="300"
+          height="400"
           viewBox="0 0 455 591"
           fill="none"
           xmlns="http://www.w3.org/2000/svg"
@@ -530,7 +532,7 @@ const VotingComponent = ({
             message="Machine Tampering Detected, please report."
           />
         )}
-        {showReportComponent && <Report />}
+        {showReportComponent && <Report />&& <Timer timeLeft={300} onClose={onClose} />}
       </>
     </>
   );

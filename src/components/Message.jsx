@@ -36,10 +36,11 @@ const Messages = ({ text }) => {
       >
         Instructions
       </h5>
-      <div style={{ marginTop: "41px" }}>
-        <Typist cursor={{ blink: true }} avgTypingDelay={50}>
+      <div style={{ marginTop: "25px" }}>
+       <div>
           {text}
-        </Typist>
+          </div>
+       
         {/* {showBtn && (
           <Button
             sx={{ marginTop: 5, marginLeft: -1 }}

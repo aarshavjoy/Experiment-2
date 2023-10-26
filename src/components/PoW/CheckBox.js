@@ -35,7 +35,7 @@ function CheckboxCard({onClick}) {
 
   return (<>
    <Messages text={"To trigger the replacement of a voting machine, all three checkboxes must be ticked,Just as in PoW where miners must solve complex computational puzzles to secure the blockchain, here, our conditions must be met to secure the voting process."} />
-    <div className="card checkbox">
+    <div className="card checkbox" style={{ marginTop: 30 }}>
       <div className="card-header">
      
       </div>

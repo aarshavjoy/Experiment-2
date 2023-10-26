@@ -108,14 +108,15 @@ const Scene = () => {
                     return (
                       <group>
                         <mesh position={board.position}>
-                          <boxGeometry args={[3, 1, 0]} />
+                          <boxGeometry args={[4, 1, 0]} />
                           <meshBasicMaterial />
                           <Text
                             position={[0, 0.2, 0.1]}
                             color="black"
                             anchorX="center"
                             anchorY="center"
-                            fontSize={0.4}
+                            fontSize={0.27}
+                            strokeWidth={30}
                           >
                             {board.title}
                           </Text>

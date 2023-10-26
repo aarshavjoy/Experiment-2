@@ -37,7 +37,7 @@ function LoginAuth({ onClick }) {
 
   return (<>
   <Messages text={"In our simulation, we've introduced an 'Authority Panel' to manage and replace tampered voting machines, ensuring the integrity of the electoral process. similar to how nodes and miners in a blockchain network work to verify transactions."}/>
-    <div className="login-container">
+    <div className="login-container"style={{ marginTop: 30 }}>
       <form onSubmit={handleSubmit}>
         <div className="form-group">
           <h4 className="logins">Authority Login</h4>

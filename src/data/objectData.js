@@ -5,7 +5,7 @@ export const objectData = [
     Board: [
       {
         id: 1,
-        title: "",
+        title: "Verification",
         position: [-1, 6, -9.6],
       },
     ],
@@ -17,7 +17,7 @@ export const objectData = [
     Board: [
       {
         id: 1,
-        title: "",
+        title: "prevent Double Voting",
         position: [4, 6, -9.6],
       },
     ],
@@ -29,7 +29,7 @@ export const objectData = [
     Board: [
       {
         id: 1,
-        title: "",
+        title: " Securing the Electoral Process ",
         position: [8.5, 6, -9.6],
       },
     ],
@@ -41,7 +41,7 @@ export const objectData = [
     Board: [
       {
         id: 1,
-        title: "",
+        title: "Public Verification",
         position: [13, 6, -9.6],
       },
     ],
