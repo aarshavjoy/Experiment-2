@@ -3,7 +3,7 @@ import sound from "../../Assets/Audios/beep.mp3";
 import { useState } from "react";
 import Tables from "./Table";
 import Report from "./Report";
-import Timer from"./Timer";
+import Timer from "./Timer";
 import AlertReport from "./AlertReport";
 import {
   updateSelectedCardIndex,
@@ -20,7 +20,8 @@ const VotingComponent = ({
   status,
   userName,
   showTables,
-  currentColor ,onClose
+  currentColor,
+  onClose,
 }) => {
   const { userIntract, task, selectedCardIndex } = useSelector(
     (state) => state.BlockChainReducer
@@ -53,14 +54,15 @@ const VotingComponent = ({
       setShowAlertReport(true);
     }
   };
-const changeText =currentColor === "green"? " green light indicates that the machine is tamper-free, and the voter can cast their vote without concern":"The light turns 'red,' it means the machine might have been tampered with. Just as in PoW, where a node is suspected of being incorrect and reported, in this case, a red light indicates that the voting machine should be reported to the authorities for replacement"
+  const changeText =
+    currentColor === "green"
+      ? " green light indicates that the machine is tamper-free, and the voter can cast their vote without concern"
+      : "The light turns 'red,' it means the machine might have been tampered with. Just as in PoW, where a node is suspected of being incorrect and reported, in this case, a red light indicates that the voting machine should be reported to the authorities for replacement";
   return (
     <>
-     <Messages text={changeText}/>
+      <Messages text={changeText} />
       <>
-
         <svg
-        
           width="300"
           height="400"
           viewBox="0 0 455 591"
@@ -532,7 +534,7 @@ const changeText =currentColor === "green"? " green light indicates that the mac
             message="Machine Tampering Detected, please report."
           />
         )}
-        {showReportComponent && <Report />&& <Timer timeLeft={300} onClose={onClose} />}
+        {showReportComponent && <Report />}
       </>
     </>
   );

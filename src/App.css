@@ -230,7 +230,8 @@ margin-top:10%;
   margin-left:25%;
 }
 .timer{
-  color:#fff
+  color:yellow;
+  margin-bottom: 15px;
 }
 .report-button{
   margin-left :65%;

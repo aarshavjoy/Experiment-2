@@ -1,5 +1,5 @@
 import React from "react";
-import Login from "../components/common/Login"
+import Login from "../components/Common/Login";
 import Scene from "./ThreeComponents/Scene";
 import Token from "./PoW/Token";
 import Timer from "./PoW/Timer";
@@ -27,9 +27,7 @@ export default function PowComponent() {
   const [currentPage, setCurrentPage] = useState("login");
   const [token, setToken] = useState("");
   const [showTimer, setShowTimer] = useState(false);
-  const [showVotingComponent, setShowVotingComponent] = useState(false);
-  const [showReport, setShowReport] = useState(false);
-  const [showNotification, setShowNotification] = useState(true);
+
   const [votingData, setVotingData] = useState(null);
   const [userName, setUserName] = useState("");
   const [currentColor, setCurrentColor] = useState(getRandomColor());
@@ -38,7 +36,7 @@ export default function PowComponent() {
       ? (selectedCardIndex[selectedCardIndex.length - 1] + 1) % 4
       : 0;
   function getRandomColor() {
-    return Math.random() < 0.5 ? 'green' : 'red';
+    return Math.random() < 0.5 ? "green" : "red";
   }
   const showName = (userName) => {
     dispatch(updateSelectedCardIndex([...selectedCardIndex, nextIndex]));
@@ -51,9 +49,6 @@ export default function PowComponent() {
   const handleLoginClose = () => {
     setCurrentPage("token");
     setShowTimer(true);
-  };
-  const generateRandomToken = () => {
-    setToken("");
   };
 
   const handleTokenClose = () => {
@@ -83,14 +78,14 @@ export default function PowComponent() {
   };
   const handleVote = () => {
     setCurrentPage("vote");
-    setCurrentColor('green');
+    setCurrentColor("green");
   };
   const showTables = (votingData) => {
     setVotingData(votingData);
     setCurrentPage("tables");
     console.log(votingData);
   };
-console.log(task,userIntract,'check')
+
   return (
     <>
       <div className="App">
@@ -100,9 +95,10 @@ console.log(task,userIntract,'check')
               <Scene />
             </div>
             <div className="col-md-3 right-column">
+              {task > 2 && <Timer initialTime={300} />}
               {currentPage === "login" && userIntract && task === 1 ? (
                 <Login
-                  generateRandomToken={() => { }}
+                  generateRandomToken={() => {}}
                   setCurrentPage={handleLoginClose}
                   onButtonClick={showName}
                 />
@@ -110,14 +106,14 @@ console.log(task,userIntract,'check')
 
               {currentPage === "token" && userIntract && task === 2 ? (
                 <>
-                  <Timer initialTime={300} />
                   <Token onClose={handleTokenClose} />
                 </>
               ) : null}
 
-              {currentPage === "votingComponent"&& userIntract && task === 3 ?
-                 (<>
-                  <Timer initialTime={300} />
+              {currentPage === "votingComponent" &&
+              userIntract &&
+              task === 3 ? (
+                <>
                   <VotingComponent
                     onClick={handleReport}
                     onChange={handleTable}
@@ -125,17 +121,16 @@ console.log(task,userIntract,'check')
                     userName={userName}
                     currentColor={currentColor}
                   />
-                  </>
-                ) : null}
+                </>
+              ) : null}
 
               {currentPage === "tables" && userIntract && task === 4 ? (
                 <>
-                <Timer initialTime={300} />
-                <Tables
-                  userName={votingData.userName}
-                  time={votingData.time}
-                  status={votingData.status}
-                />
+                  <Tables
+                    userName={votingData.userName}
+                    time={votingData.time}
+                    status={votingData.status}
+                  />
                 </>
               ) : null}
 
@@ -157,20 +152,36 @@ console.log(task,userIntract,'check')
                   onChange={handleTable}
                   showTables={showTables}
                   userName={userName}
-                  currentColor={currentColor} 
+                  currentColor={currentColor}
                 />
               ) : null}
               {!userIntract && task === 1 && (
-                <InstructionMessage text={"In this simulation, we will explore the concept of Proof of Work (PoW) through an election scenario.During this simulation, think of the election as our blockchain. Voters, like blockchain participants, will need to provide proof of their eligibility, just as PoW ensures the legitimacy of transactions in the blockchain. click the below button to start the process."} />
+                <InstructionMessage
+                  text={
+                    "In this simulation, we will explore the concept of Proof of Work (PoW) through an election scenario.During this simulation, think of the election as our blockchain. Voters, like blockchain participants, will need to provide proof of their eligibility, just as PoW ensures the legitimacy of transactions in the blockchain. click the below button to start the process."
+                  }
+                />
               )}
               {!userIntract && task === 2 && (
-                <InstructionMessage text={"We've seen  that PoW prevents double-spending in cryptocurrencies, and similarly, in elections, it's vital to prevent individuals from casting multiple votes.To prevent double voting, we've created a special 'token' for each voter, think of the 'token' as a cryptographic key, and the 'timer' as the time it takes for the PoW to complete."} />
+                <InstructionMessage
+                  text={
+                    "We've seen  that PoW prevents double-spending in cryptocurrencies, and similarly, in elections, it's vital to prevent individuals from casting multiple votes.To prevent double voting, we've created a special 'token' for each voter, think of the 'token' as a cryptographic key, and the 'timer' as the time it takes for the PoW to complete."
+                  }
+                />
               )}
               {!userIntract && task === 3 && (
-                <InstructionMessage text={"Each voting machine has an indicator light. A 'green light' indicates that the machine is tamper-free, and the voter can cast their vote without concern.However, if the light turns 'red,' it means the machine might have been tampered with. Just as in PoW, where a node is suspected of being incorrect and reported"} />
+                <InstructionMessage
+                  text={
+                    "Each voting machine has an indicator light. A 'green light' indicates that the machine is tamper-free, and the voter can cast their vote without concern.However, if the light turns 'red,' it means the machine might have been tampered with. Just as in PoW, where a node is suspected of being incorrect and reported"
+                  }
+                />
               )}
               {!userIntract && task === 4 && (
-                <InstructionMessage text={"After you've cast your vote using the secure voting machine, a table will appear on the screen.The purpose of this table is to ensure public verification, similar to the transparency offered by blockchain technology, where the transactions are visible to participants."} />
+                <InstructionMessage
+                  text={
+                    "After you've cast your vote using the secure voting machine, a table will appear on the screen.The purpose of this table is to ensure public verification, similar to the transparency offered by blockchain technology, where the transactions are visible to participants."
+                  }
+                />
               )}
             </div>
           </div>

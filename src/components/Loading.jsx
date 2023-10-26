@@ -9,11 +9,11 @@ const Loading = () => {
         display: "flex",
         alignItems: "center",
         justifyContent: "center",
-        height:'100vh'
+        height: "100vh",
       }}
     >
       <RevolvingDot
-        radius="45"
+        radius="25"
         strokeWidth="3"
         color="white"
         secondaryColor="#1bfaff"
