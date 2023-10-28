@@ -278,7 +278,11 @@ margin-top:10%;
 }
 .reportbtn{
   background-color: #022027;
-  color:#fff;
+  color:#0a0a0a;
+  background-color: #fff;
+  border-radius: 6px;
+  border:none;
+
 }
 .alerthead{
   text-align:center;
